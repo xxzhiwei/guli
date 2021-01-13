@@ -1,0 +1,21 @@
+2021-01-13 09:29:36.127 [http-nio-8090-exec-9] ERROR c.a.base.exceptionHandler.GlobalExceptionHandler - 
+### Error updating database.  Cause: java.sql.SQLException: Field 'gmt_create' doesn't have a default value
+### The error may involve com.atshixin.edu.mapper.VideoMapper.insert-Inline
+### The error occurred while setting parameters
+### SQL: INSERT INTO edu_video  ( id, course_id, chapter_id, title, video_source_id, video_original_name, sort, play_count, is_free, duration, status, size, version )  VALUES  ( ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ? )
+### Cause: java.sql.SQLException: Field 'gmt_create' doesn't have a default value
+; Field 'gmt_create' doesn't have a default value; nested exception is java.sql.SQLException: Field 'gmt_create' doesn't have a default value
+2021-01-13 10:27:02.783 [http-nio-8090-exec-5] ERROR c.a.base.exceptionHandler.GlobalExceptionHandler - 
+### Error updating database.  Cause: java.sql.SQLException: Field 'chapter_id' doesn't have a default value
+### The error may involve com.atshixin.edu.mapper.VideoMapper.insert-Inline
+### The error occurred while setting parameters
+### SQL: INSERT INTO edu_video  ( id, course_id,  title,   sort,  is_free,     gmt_create, gmt_modified )  VALUES  ( ?, ?,  ?,   ?,  ?,     ?, ? )
+### Cause: java.sql.SQLException: Field 'chapter_id' doesn't have a default value
+; Field 'chapter_id' doesn't have a default value; nested exception is java.sql.SQLException: Field 'chapter_id' doesn't have a default value
+2021-01-13 10:52:04.878 [http-nio-8090-exec-2] ERROR c.a.base.exceptionHandler.GlobalExceptionHandler - 
+### Error updating database.  Cause: java.sql.SQLIntegrityConstraintViolationException: Duplicate entry '1349181047857291265' for key 'PRIMARY'
+### The error may involve com.atshixin.edu.mapper.ChapterMapper.insert-Inline
+### The error occurred while setting parameters
+### SQL: INSERT INTO edu_chapter  ( id, course_id, title, sort, gmt_create, gmt_modified )  VALUES  ( ?, ?, ?, ?, ?, ? )
+### Cause: java.sql.SQLIntegrityConstraintViolationException: Duplicate entry '1349181047857291265' for key 'PRIMARY'
+; Duplicate entry '1349181047857291265' for key 'PRIMARY'; nested exception is java.sql.SQLIntegrityConstraintViolationException: Duplicate entry '1349181047857291265' for key 'PRIMARY'

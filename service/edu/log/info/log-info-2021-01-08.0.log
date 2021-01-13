@@ -1,0 +1,117 @@
+2021-01-08 09:42:32.176 [SpringContextShutdownHook] INFO  o.s.scheduling.concurrent.ThreadPoolTaskExecutor - Shutting down ExecutorService 'applicationTaskExecutor'
+2021-01-08 09:42:32.184 [SpringContextShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2021-01-08 09:42:32.203 [SpringContextShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+2021-01-08 09:44:09.968 [main] INFO  com.atshixin.edu.EduApplication - Starting EduApplication on xieshixindeMacBook-Pro.local with PID 8780 (/Users/xieshixin/learnplace/java/guli/service/edu/target/classes started by xieshixin in /Users/xieshixin/learnplace/java/guli)
+2021-01-08 09:44:09.972 [main] INFO  com.atshixin.edu.EduApplication - The following profiles are active: dev
+2021-01-08 09:44:11.157 [main] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8090 (http)
+2021-01-08 09:44:11.165 [main] INFO  org.apache.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8090"]
+2021-01-08 09:44:11.166 [main] INFO  org.apache.catalina.core.StandardService - Starting service [Tomcat]
+2021-01-08 09:44:11.166 [main] INFO  org.apache.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.31]
+2021-01-08 09:44:11.231 [main] INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2021-01-08 09:44:11.232 [main] INFO  org.springframework.web.context.ContextLoader - Root WebApplicationContext: initialization completed in 1140 ms
+2021-01-08 09:44:11.412 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2021-01-08 09:44:11.769 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2021-01-08 09:44:12.233 [main] INFO  s.d.s.w.PropertySourcedRequestMappingHandlerMapping - Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
+2021-01-08 09:44:12.327 [main] INFO  o.s.scheduling.concurrent.ThreadPoolTaskExecutor - Initializing ExecutorService 'applicationTaskExecutor'
+2021-01-08 09:44:12.520 [main] INFO  s.d.s.web.plugins.DocumentationPluginsBootstrapper - Context refreshed
+2021-01-08 09:44:12.537 [main] INFO  s.d.s.web.plugins.DocumentationPluginsBootstrapper - Found 1 custom documentation plugin(s)
+2021-01-08 09:44:12.577 [main] INFO  s.d.spring.web.scanners.ApiListingReferenceScanner - Scanning for api listing references
+2021-01-08 09:44:12.757 [main] INFO  org.apache.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8090"]
+2021-01-08 09:44:12.791 [main] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat started on port(s): 8090 (http) with context path ''
+2021-01-08 09:44:12.796 [main] INFO  com.atshixin.edu.EduApplication - Started EduApplication in 3.995 seconds (JVM running for 5.322)
+2021-01-08 09:44:22.810 [http-nio-8090-exec-1] INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2021-01-08 09:44:22.810 [http-nio-8090-exec-1] INFO  org.springframework.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2021-01-08 09:44:22.820 [http-nio-8090-exec-1] INFO  org.springframework.web.servlet.DispatcherServlet - Completed initialization in 10 ms
+2021-01-08 09:54:33.899 [SpringContextShutdownHook] INFO  o.s.scheduling.concurrent.ThreadPoolTaskExecutor - Shutting down ExecutorService 'applicationTaskExecutor'
+2021-01-08 09:54:33.905 [SpringContextShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2021-01-08 09:54:33.912 [SpringContextShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+2021-01-08 09:54:41.308 [main] INFO  com.atshixin.edu.EduApplication - Starting EduApplication on xieshixindeMacBook-Pro.local with PID 8796 (/Users/xieshixin/learnplace/java/guli/service/edu/target/classes started by xieshixin in /Users/xieshixin/learnplace/java/guli)
+2021-01-08 09:54:41.320 [main] INFO  com.atshixin.edu.EduApplication - The following profiles are active: dev
+2021-01-08 09:54:42.737 [main] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8090 (http)
+2021-01-08 09:54:42.747 [main] INFO  org.apache.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8090"]
+2021-01-08 09:54:42.748 [main] INFO  org.apache.catalina.core.StandardService - Starting service [Tomcat]
+2021-01-08 09:54:42.748 [main] INFO  org.apache.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.31]
+2021-01-08 09:54:42.820 [main] INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2021-01-08 09:54:42.820 [main] INFO  org.springframework.web.context.ContextLoader - Root WebApplicationContext: initialization completed in 1376 ms
+2021-01-08 09:54:42.996 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2021-01-08 09:54:43.541 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2021-01-08 09:54:44.160 [main] INFO  s.d.s.w.PropertySourcedRequestMappingHandlerMapping - Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
+2021-01-08 09:54:44.239 [main] INFO  o.s.scheduling.concurrent.ThreadPoolTaskExecutor - Initializing ExecutorService 'applicationTaskExecutor'
+2021-01-08 09:54:44.427 [main] INFO  s.d.s.web.plugins.DocumentationPluginsBootstrapper - Context refreshed
+2021-01-08 09:54:44.440 [main] INFO  s.d.s.web.plugins.DocumentationPluginsBootstrapper - Found 1 custom documentation plugin(s)
+2021-01-08 09:54:44.500 [main] INFO  s.d.spring.web.scanners.ApiListingReferenceScanner - Scanning for api listing references
+2021-01-08 09:54:44.649 [main] INFO  org.apache.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8090"]
+2021-01-08 09:54:44.683 [main] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat started on port(s): 8090 (http) with context path ''
+2021-01-08 09:54:44.687 [main] INFO  com.atshixin.edu.EduApplication - Started EduApplication in 4.268 seconds (JVM running for 5.128)
+2021-01-08 09:54:50.734 [http-nio-8090-exec-1] INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2021-01-08 09:54:50.735 [http-nio-8090-exec-1] INFO  org.springframework.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2021-01-08 09:54:50.742 [http-nio-8090-exec-1] INFO  org.springframework.web.servlet.DispatcherServlet - Completed initialization in 7 ms
+2021-01-08 09:58:20.026 [SpringContextShutdownHook] INFO  o.s.scheduling.concurrent.ThreadPoolTaskExecutor - Shutting down ExecutorService 'applicationTaskExecutor'
+2021-01-08 09:58:20.035 [SpringContextShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2021-01-08 09:58:20.041 [SpringContextShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+2021-01-08 09:58:26.016 [main] INFO  com.atshixin.edu.EduApplication - Starting EduApplication on xieshixindeMacBook-Pro.local with PID 8814 (/Users/xieshixin/learnplace/java/guli/service/edu/target/classes started by xieshixin in /Users/xieshixin/learnplace/java/guli)
+2021-01-08 09:58:26.020 [main] INFO  com.atshixin.edu.EduApplication - The following profiles are active: dev
+2021-01-08 09:58:27.453 [main] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8090 (http)
+2021-01-08 09:58:27.461 [main] INFO  org.apache.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8090"]
+2021-01-08 09:58:27.462 [main] INFO  org.apache.catalina.core.StandardService - Starting service [Tomcat]
+2021-01-08 09:58:27.462 [main] INFO  org.apache.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.31]
+2021-01-08 09:58:27.528 [main] INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2021-01-08 09:58:27.528 [main] INFO  org.springframework.web.context.ContextLoader - Root WebApplicationContext: initialization completed in 1398 ms
+2021-01-08 09:58:27.713 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2021-01-08 09:58:28.078 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2021-01-08 09:58:28.535 [main] INFO  s.d.s.w.PropertySourcedRequestMappingHandlerMapping - Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
+2021-01-08 09:58:28.617 [main] INFO  o.s.scheduling.concurrent.ThreadPoolTaskExecutor - Initializing ExecutorService 'applicationTaskExecutor'
+2021-01-08 09:58:28.809 [main] INFO  s.d.s.web.plugins.DocumentationPluginsBootstrapper - Context refreshed
+2021-01-08 09:58:28.823 [main] INFO  s.d.s.web.plugins.DocumentationPluginsBootstrapper - Found 1 custom documentation plugin(s)
+2021-01-08 09:58:28.869 [main] INFO  s.d.spring.web.scanners.ApiListingReferenceScanner - Scanning for api listing references
+2021-01-08 09:58:29.051 [main] INFO  org.apache.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8090"]
+2021-01-08 09:58:29.088 [main] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat started on port(s): 8090 (http) with context path ''
+2021-01-08 09:58:29.092 [main] INFO  com.atshixin.edu.EduApplication - Started EduApplication in 3.921 seconds (JVM running for 4.709)
+2021-01-08 09:58:37.155 [http-nio-8090-exec-1] INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2021-01-08 09:58:37.156 [http-nio-8090-exec-1] INFO  org.springframework.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2021-01-08 09:58:37.163 [http-nio-8090-exec-1] INFO  org.springframework.web.servlet.DispatcherServlet - Completed initialization in 7 ms
+2021-01-08 10:32:21.831 [SpringContextShutdownHook] INFO  o.s.scheduling.concurrent.ThreadPoolTaskExecutor - Shutting down ExecutorService 'applicationTaskExecutor'
+2021-01-08 10:32:21.836 [SpringContextShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2021-01-08 10:32:21.844 [SpringContextShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+2021-01-08 10:32:30.132 [main] INFO  com.atshixin.edu.EduApplication - Starting EduApplication on xieshixindeMacBook-Pro.local with PID 9026 (/Users/xieshixin/learnplace/java/guli/service/edu/target/classes started by xieshixin in /Users/xieshixin/learnplace/java/guli)
+2021-01-08 10:32:30.137 [main] INFO  com.atshixin.edu.EduApplication - The following profiles are active: dev
+2021-01-08 10:32:32.425 [main] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8090 (http)
+2021-01-08 10:32:32.438 [main] INFO  org.apache.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8090"]
+2021-01-08 10:32:32.440 [main] INFO  org.apache.catalina.core.StandardService - Starting service [Tomcat]
+2021-01-08 10:32:32.440 [main] INFO  org.apache.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.31]
+2021-01-08 10:32:32.517 [main] INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2021-01-08 10:32:32.518 [main] INFO  org.springframework.web.context.ContextLoader - Root WebApplicationContext: initialization completed in 2186 ms
+2021-01-08 10:32:32.753 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2021-01-08 10:32:33.194 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2021-01-08 10:32:33.779 [main] INFO  s.d.s.w.PropertySourcedRequestMappingHandlerMapping - Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
+2021-01-08 10:32:33.877 [main] INFO  o.s.scheduling.concurrent.ThreadPoolTaskExecutor - Initializing ExecutorService 'applicationTaskExecutor'
+2021-01-08 10:32:34.109 [main] INFO  s.d.s.web.plugins.DocumentationPluginsBootstrapper - Context refreshed
+2021-01-08 10:32:34.132 [main] INFO  s.d.s.web.plugins.DocumentationPluginsBootstrapper - Found 1 custom documentation plugin(s)
+2021-01-08 10:32:34.267 [main] INFO  s.d.spring.web.scanners.ApiListingReferenceScanner - Scanning for api listing references
+2021-01-08 10:32:34.568 [main] INFO  org.apache.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8090"]
+2021-01-08 10:32:34.625 [main] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat started on port(s): 8090 (http) with context path ''
+2021-01-08 10:32:34.629 [main] INFO  com.atshixin.edu.EduApplication - Started EduApplication in 5.691 seconds (JVM running for 6.864)
+2021-01-08 10:32:38.255 [http-nio-8090-exec-1] INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2021-01-08 10:32:38.255 [http-nio-8090-exec-1] INFO  org.springframework.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2021-01-08 10:32:38.263 [http-nio-8090-exec-1] INFO  org.springframework.web.servlet.DispatcherServlet - Completed initialization in 7 ms
+2021-01-08 13:37:09.494 [main] INFO  com.atshixin.edu.EduApplication - Starting EduApplication on xieshixindeMacBook-Pro.local with PID 2238 (/Users/xieshixin/learnplace/java/guli/service/edu/target/classes started by xieshixin in /Users/xieshixin/learnplace/java/guli)
+2021-01-08 13:37:09.499 [main] INFO  com.atshixin.edu.EduApplication - The following profiles are active: dev
+2021-01-08 13:37:13.578 [main] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8090 (http)
+2021-01-08 13:37:13.742 [main] INFO  org.apache.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8090"]
+2021-01-08 13:37:13.743 [main] INFO  org.apache.catalina.core.StandardService - Starting service [Tomcat]
+2021-01-08 13:37:13.744 [main] INFO  org.apache.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.31]
+2021-01-08 13:37:14.024 [main] INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2021-01-08 13:37:14.024 [main] INFO  org.springframework.web.context.ContextLoader - Root WebApplicationContext: initialization completed in 4225 ms
+2021-01-08 13:37:14.713 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2021-01-08 13:37:16.011 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2021-01-08 13:37:17.130 [main] INFO  s.d.s.w.PropertySourcedRequestMappingHandlerMapping - Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
+2021-01-08 13:37:17.308 [main] INFO  o.s.scheduling.concurrent.ThreadPoolTaskExecutor - Initializing ExecutorService 'applicationTaskExecutor'
+2021-01-08 13:37:17.611 [main] INFO  s.d.s.web.plugins.DocumentationPluginsBootstrapper - Context refreshed
+2021-01-08 13:37:17.633 [main] INFO  s.d.s.web.plugins.DocumentationPluginsBootstrapper - Found 1 custom documentation plugin(s)
+2021-01-08 13:37:17.697 [main] INFO  s.d.spring.web.scanners.ApiListingReferenceScanner - Scanning for api listing references
+2021-01-08 13:37:17.894 [main] INFO  org.apache.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8090"]
+2021-01-08 13:37:17.930 [main] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat started on port(s): 8090 (http) with context path ''
+2021-01-08 13:37:17.934 [main] INFO  com.atshixin.edu.EduApplication - Started EduApplication in 10.496 seconds (JVM running for 13.124)
+2021-01-08 13:37:42.888 [http-nio-8090-exec-1] INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2021-01-08 13:37:42.889 [http-nio-8090-exec-1] INFO  org.springframework.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2021-01-08 13:37:42.899 [http-nio-8090-exec-1] INFO  org.springframework.web.servlet.DispatcherServlet - Completed initialization in 10 ms

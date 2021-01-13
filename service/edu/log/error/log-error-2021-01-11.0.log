@@ -1,0 +1,21 @@
+2021-01-11 09:56:24.488 [http-nio-8090-exec-5] ERROR c.a.base.exceptionHandler.GlobalExceptionHandler - 
+### Error updating database.  Cause: java.sql.SQLIntegrityConstraintViolationException: Duplicate entry '1348141723099459586' for key 'PRIMARY'
+### The error may involve com.atshixin.edu.mapper.CourseMapper.insert-Inline
+### The error occurred while setting parameters
+### SQL: INSERT INTO edu_course  ( id, teacher_id, subject_id, subject_parent_id, title, price, lesson_num, cover,      gmt_create, gmt_modified )  VALUES  ( ?, ?, ?, ?, ?, ?, ?, ?,      ?, ? )
+### Cause: java.sql.SQLIntegrityConstraintViolationException: Duplicate entry '1348141723099459586' for key 'PRIMARY'
+; Duplicate entry '1348141723099459586' for key 'PRIMARY'; nested exception is java.sql.SQLIntegrityConstraintViolationException: Duplicate entry '1348141723099459586' for key 'PRIMARY'
+2021-01-11 09:57:18.021 [http-nio-8090-exec-8] ERROR c.a.base.exceptionHandler.GlobalExceptionHandler - 
+### Error updating database.  Cause: java.sql.SQLIntegrityConstraintViolationException: Duplicate entry '1348141723099459586' for key 'PRIMARY'
+### The error may involve com.atshixin.edu.mapper.CourseDescriptionMapper.insert-Inline
+### The error occurred while setting parameters
+### SQL: INSERT INTO edu_course_description  ( id, description, gmt_create, gmt_modified )  VALUES  ( ?, ?, ?, ? )
+### Cause: java.sql.SQLIntegrityConstraintViolationException: Duplicate entry '1348141723099459586' for key 'PRIMARY'
+; Duplicate entry '1348141723099459586' for key 'PRIMARY'; nested exception is java.sql.SQLIntegrityConstraintViolationException: Duplicate entry '1348141723099459586' for key 'PRIMARY'
+2021-01-11 09:58:50.043 [http-nio-8090-exec-10] ERROR c.a.base.exceptionHandler.GlobalExceptionHandler - 
+### Error updating database.  Cause: java.sql.SQLIntegrityConstraintViolationException: Duplicate entry '1348141723099459586' for key 'PRIMARY'
+### The error may involve com.atshixin.edu.mapper.CourseDescriptionMapper.insert-Inline
+### The error occurred while setting parameters
+### SQL: INSERT INTO edu_course_description  ( id, description, gmt_create, gmt_modified )  VALUES  ( ?, ?, ?, ? )
+### Cause: java.sql.SQLIntegrityConstraintViolationException: Duplicate entry '1348141723099459586' for key 'PRIMARY'
+; Duplicate entry '1348141723099459586' for key 'PRIMARY'; nested exception is java.sql.SQLIntegrityConstraintViolationException: Duplicate entry '1348141723099459586' for key 'PRIMARY'

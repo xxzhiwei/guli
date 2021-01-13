@@ -1,0 +1,2 @@
+2021-01-05 11:57:52.416 [http-nio-8080-exec-5] ERROR c.a.base.exceptionHandler.GlobalExceptionHandler - Failed to convert value of type 'java.lang.String' to required type 'java.lang.Long'; nested exception is java.lang.NumberFormatException: For input string: "{"isTrusted":true}"
+2021-01-05 12:02:08.229 [http-nio-8080-exec-4] ERROR c.a.base.exceptionHandler.GlobalExceptionHandler - Failed to convert value of type 'java.lang.String' to required type 'java.lang.Integer'; nested exception is java.lang.NumberFormatException: For input string: "{"isTrusted":true}"

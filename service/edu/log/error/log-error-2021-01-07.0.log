@@ -1,0 +1,63 @@
+2021-01-07 10:13:55.458 [main] ERROR org.springframework.boot.SpringApplication - Application run failed
+org.springframework.beans.factory.BeanDefinitionStoreException: Failed to parse configuration class [com.atshixin.edu.EduApplication]; nested exception is org.springframework.context.annotation.ConflictingBeanDefinitionException: Annotation-specified bean name 'eduConfig' for bean class [com.atshixin.guliedu.config.EduConfig] conflicts with existing, non-compatible bean definition of same name and class [com.atshixin.edu.config.EduConfig]
+	at org.springframework.context.annotation.ConfigurationClassParser.parse(ConfigurationClassParser.java:188)
+	at org.springframework.context.annotation.ConfigurationClassPostProcessor.processConfigBeanDefinitions(ConfigurationClassPostProcessor.java:319)
+	at org.springframework.context.annotation.ConfigurationClassPostProcessor.postProcessBeanDefinitionRegistry(ConfigurationClassPostProcessor.java:236)
+	at org.springframework.context.support.PostProcessorRegistrationDelegate.invokeBeanDefinitionRegistryPostProcessors(PostProcessorRegistrationDelegate.java:275)
+	at org.springframework.context.support.PostProcessorRegistrationDelegate.invokeBeanFactoryPostProcessors(PostProcessorRegistrationDelegate.java:95)
+	at org.springframework.context.support.AbstractApplicationContext.invokeBeanFactoryPostProcessors(AbstractApplicationContext.java:706)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:532)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:141)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:747)
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:397)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:315)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1226)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1215)
+	at com.atshixin.edu.EduApplication.main(EduApplication.java:11)
+Caused by: org.springframework.context.annotation.ConflictingBeanDefinitionException: Annotation-specified bean name 'eduConfig' for bean class [com.atshixin.guliedu.config.EduConfig] conflicts with existing, non-compatible bean definition of same name and class [com.atshixin.edu.config.EduConfig]
+	at org.springframework.context.annotation.ClassPathBeanDefinitionScanner.checkCandidate(ClassPathBeanDefinitionScanner.java:349)
+	at org.springframework.context.annotation.ClassPathBeanDefinitionScanner.doScan(ClassPathBeanDefinitionScanner.java:287)
+	at org.springframework.context.annotation.ComponentScanAnnotationParser.parse(ComponentScanAnnotationParser.java:132)
+	at org.springframework.context.annotation.ConfigurationClassParser.doProcessConfigurationClass(ConfigurationClassParser.java:295)
+	at org.springframework.context.annotation.ConfigurationClassParser.processConfigurationClass(ConfigurationClassParser.java:249)
+	at org.springframework.context.annotation.ConfigurationClassParser.parse(ConfigurationClassParser.java:206)
+	at org.springframework.context.annotation.ConfigurationClassParser.parse(ConfigurationClassParser.java:174)
+	... 13 common frames omitted
+2021-01-07 10:17:01.367 [main] ERROR org.springframework.boot.SpringApplication - Application run failed
+org.springframework.beans.factory.BeanDefinitionStoreException: Failed to parse configuration class [com.atshixin.edu.EduApplication]; nested exception is org.springframework.context.annotation.ConflictingBeanDefinitionException: Annotation-specified bean name 'eduConfig' for bean class [com.atshixin.guliedu.config.EduConfig] conflicts with existing, non-compatible bean definition of same name and class [com.atshixin.edu.config.EduConfig]
+	at org.springframework.context.annotation.ConfigurationClassParser.parse(ConfigurationClassParser.java:188)
+	at org.springframework.context.annotation.ConfigurationClassPostProcessor.processConfigBeanDefinitions(ConfigurationClassPostProcessor.java:319)
+	at org.springframework.context.annotation.ConfigurationClassPostProcessor.postProcessBeanDefinitionRegistry(ConfigurationClassPostProcessor.java:236)
+	at org.springframework.context.support.PostProcessorRegistrationDelegate.invokeBeanDefinitionRegistryPostProcessors(PostProcessorRegistrationDelegate.java:275)
+	at org.springframework.context.support.PostProcessorRegistrationDelegate.invokeBeanFactoryPostProcessors(PostProcessorRegistrationDelegate.java:95)
+	at org.springframework.context.support.AbstractApplicationContext.invokeBeanFactoryPostProcessors(AbstractApplicationContext.java:706)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:532)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:141)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:747)
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:397)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:315)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1226)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1215)
+	at com.atshixin.edu.EduApplication.main(EduApplication.java:11)
+Caused by: org.springframework.context.annotation.ConflictingBeanDefinitionException: Annotation-specified bean name 'eduConfig' for bean class [com.atshixin.guliedu.config.EduConfig] conflicts with existing, non-compatible bean definition of same name and class [com.atshixin.edu.config.EduConfig]
+	at org.springframework.context.annotation.ClassPathBeanDefinitionScanner.checkCandidate(ClassPathBeanDefinitionScanner.java:349)
+	at org.springframework.context.annotation.ClassPathBeanDefinitionScanner.doScan(ClassPathBeanDefinitionScanner.java:287)
+	at org.springframework.context.annotation.ComponentScanAnnotationParser.parse(ComponentScanAnnotationParser.java:132)
+	at org.springframework.context.annotation.ConfigurationClassParser.doProcessConfigurationClass(ConfigurationClassParser.java:295)
+	at org.springframework.context.annotation.ConfigurationClassParser.processConfigurationClass(ConfigurationClassParser.java:249)
+	at org.springframework.context.annotation.ConfigurationClassParser.parse(ConfigurationClassParser.java:206)
+	at org.springframework.context.annotation.ConfigurationClassParser.parse(ConfigurationClassParser.java:174)
+	... 13 common frames omitted
+2021-01-07 15:54:56.510 [http-nio-8090-exec-1] ERROR c.a.base.exceptionHandler.GlobalExceptionHandler - Required request part 'file' is not present
+2021-01-07 15:56:30.120 [http-nio-8090-exec-5] ERROR c.a.base.exceptionHandler.GlobalExceptionHandler - null
+2021-01-07 15:57:11.502 [http-nio-8090-exec-6] ERROR c.a.base.exceptionHandler.GlobalExceptionHandler - null
+2021-01-07 15:57:24.553 [http-nio-8090-exec-7] ERROR c.a.base.exceptionHandler.GlobalExceptionHandler - null
+2021-01-07 16:01:02.107 [http-nio-8090-exec-2] ERROR c.a.base.exceptionHandler.GlobalExceptionHandler - null
+2021-01-07 16:03:53.339 [http-nio-8090-exec-5] ERROR c.a.base.exceptionHandler.GlobalExceptionHandler - null
+2021-01-07 16:05:56.415 [http-nio-8090-exec-2] ERROR c.a.base.exceptionHandler.GlobalExceptionHandler - null
+2021-01-07 16:06:17.966 [http-nio-8090-exec-3] ERROR c.a.base.exceptionHandler.GlobalExceptionHandler - null
+2021-01-07 16:06:52.579 [http-nio-8090-exec-4] ERROR c.a.base.exceptionHandler.GlobalExceptionHandler - null
+2021-01-07 16:07:10.079 [http-nio-8090-exec-5] ERROR c.a.base.exceptionHandler.GlobalExceptionHandler - null
+2021-01-07 16:08:12.460 [http-nio-8090-exec-2] ERROR c.a.base.exceptionHandler.GlobalExceptionHandler - 
+### Error flushing statements.  Cause: org.apache.ibatis.executor.BatchExecutorException: com.atshixin.edu.mapper.SubjectMapper.insert (batch index #1) failed. Cause: java.sql.BatchUpdateException: Data truncation: Data too long for column 'title' at row 1
+### Cause: org.apache.ibatis.executor.BatchExecutorException: com.atshixin.edu.mapper.SubjectMapper.insert (batch index #1) failed. Cause: java.sql.BatchUpdateException: Data truncation: Data too long for column 'title' at row 1
