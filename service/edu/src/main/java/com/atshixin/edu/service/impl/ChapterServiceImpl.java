@@ -1,7 +1,6 @@
 package com.atshixin.edu.service.impl;
 
 import com.atshixin.edu.entity.Chapter;
-import com.atshixin.edu.entity.Course;
 import com.atshixin.edu.entity.Video;
 import com.atshixin.edu.mapper.ChapterMapper;
 import com.atshixin.edu.pojo.ChapterTreeNode;
@@ -37,6 +36,7 @@ public class ChapterServiceImpl extends ServiceImpl<ChapterMapper, Chapter> impl
         chapterQueryWrapper.eq("course_id", courseId);
 
         List<Chapter> chapters = list(chapterQueryWrapper);
+
         // 2. 找出章节对应小节(注意：这里的小节是指video
         QueryWrapper<Video> videoQueryWrapper = new QueryWrapper<>();
         videoQueryWrapper.eq("course_id", courseId);

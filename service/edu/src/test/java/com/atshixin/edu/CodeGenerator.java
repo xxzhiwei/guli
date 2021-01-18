@@ -2,13 +2,14 @@ package com.atshixin.edu;
 
 import com.baomidou.mybatisplus.annotation.DbType;
 import com.baomidou.mybatisplus.annotation.IdType;
-import com.baomidou.mybatisplus.generator.AutoGenerator;
 import com.baomidou.mybatisplus.generator.config.DataSourceConfig;
-import com.baomidou.mybatisplus.generator.config.GlobalConfig;
 import com.baomidou.mybatisplus.generator.config.PackageConfig;
 import com.baomidou.mybatisplus.generator.config.StrategyConfig;
 import com.baomidou.mybatisplus.generator.config.rules.DateType;
 import com.baomidou.mybatisplus.generator.config.rules.NamingStrategy;
+import com.baomidou.mybatisplus.generator.AutoGenerator;
+import com.baomidou.mybatisplus.generator.config.GlobalConfig;
+
 import org.junit.Test;
 
 public class CodeGenerator {
@@ -32,7 +33,7 @@ public class CodeGenerator {
          * UcenterService
          * */
         gc.setServiceName("%sService");	//去掉Service接口的首字母I
-        gc.setIdType(IdType.ID_WORKER_STR); //主键策略 (long -> ID_WORKER；string -> ID_WORKER_STR
+        gc.setIdType(IdType.ASSIGN_UUID); //主键策略 (long -> ID_WORKER；string -> ID_WORKER_STR
         gc.setDateType(DateType.ONLY_DATE);//定义生成的实体类中日期类型
         gc.setSwagger2(true);//开启Swagger2模式
 

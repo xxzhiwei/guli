@@ -7,7 +7,10 @@ import com.atshixin.edu.mapper.CourseMapper;
 import com.atshixin.edu.service.CourseDescriptionService;
 import com.atshixin.edu.service.CourseService;
 import com.atshixin.edu.vo.CourseInfo;
+import com.atshixin.edu.vo.CourseListItem;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -74,4 +77,21 @@ public class CourseServiceImpl extends ServiceImpl<CourseMapper, Course> impleme
         courseInfo.setDescription(courseDescription.getDescription());
         return courseInfo;
     }
+
+    @Override
+    public Page<CourseListItem> getCourses(Integer pageIndex, Integer pageSize, QueryWrapper<Course> queryWrapper) {
+        Page<CourseListItem> page = new Page<>(pageIndex, pageSize);
+        baseMapper.getCourses(page, queryWrapper);
+        return page;
+    }
+
+//    @Override
+//    public Page<Course> getCourses(Integer pageIndex, Integer pageSize, QueryWrapper<Course> queryWrapper) {
+//
+//        Page<Course> page = new Page<>(pageIndex, pageSize);
+//
+//        this.page(page, queryWrapper);
+//
+//        return page;
+//    }
 }

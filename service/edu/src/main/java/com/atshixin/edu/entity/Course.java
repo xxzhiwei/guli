@@ -30,7 +30,7 @@ public class Course implements Serializable {
     private static final long serialVersionUID = 1L;
 
     @ApiModelProperty(value = "课程ID")
-    @TableId(value = "id", type = IdType.ID_WORKER_STR)
+    @TableId(value = "id", type = IdType.ASSIGN_UUID)
     private String id;
 
     @ApiModelProperty(value = "课程讲师ID")
@@ -66,6 +66,7 @@ public class Course implements Serializable {
     @ApiModelProperty(value = "课程状态 Draft未发布  Normal已发布")
     private String status;
 
+    @TableLogic
     @ApiModelProperty(value = "逻辑删除 1（true）已删除， 0（false）未删除")
     private Integer isDeleted;
 

@@ -2,6 +2,7 @@ package com.atshixin.edu.controller;
 
 import com.atshixin.edu.entity.Teacher;
 import com.atshixin.edu.service.TeacherService;
+import com.atshixin.edu.util.PagingHelper;
 import com.atshixin.util.R;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
@@ -55,15 +56,9 @@ public class TeacherController {
             queryWrapper.le("gmt_create", end);
         }
 
-        Page<Teacher> page = new Page<>(pageIndex, pageSize);
+        Page<Teacher> teachers = teacherService.getTeachers(pageIndex, pageSize, queryWrapper);
 
-        // 查询后，page()会将结果封装到page中
-        teacherService.page(page, queryWrapper);
-
-        return R.ok()
-                .data("total", page.getTotal())
-                .data("totalPage", page.getPages())
-                .data("items", page.getRecords());
+        return PagingHelper.paging(teachers);
     }
 
     @GetMapping("/all")
