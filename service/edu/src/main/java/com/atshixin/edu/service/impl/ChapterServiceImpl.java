@@ -1,11 +1,12 @@
 package com.atshixin.edu.service.impl;
 
 import com.atshixin.edu.entity.Chapter;
-import com.atshixin.edu.entity.Video;
+import com.atshixin.edu.entity.ChapterPart;
 import com.atshixin.edu.mapper.ChapterMapper;
+import com.atshixin.edu.pojo.ChapterPartTreeNode;
 import com.atshixin.edu.pojo.ChapterTreeNode;
 import com.atshixin.edu.service.ChapterService;
-import com.atshixin.edu.service.VideoService;
+import com.atshixin.edu.service.ChapterPartService;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.beans.BeanUtils;
@@ -27,41 +28,52 @@ import java.util.List;
 public class ChapterServiceImpl extends ServiceImpl<ChapterMapper, Chapter> implements ChapterService {
 
     @Autowired
-    private VideoService videoService;
+    private ChapterPartService chapterPartService;
 
     @Override
-    public List<ChapterTreeNode> getTreeNodesById(String courseId) {
+    public List<ChapterTreeNode> getChapterTreeNodesByCourseId(String courseId) {
         // 1. 查出所有课程对应章节
         QueryWrapper<Chapter> chapterQueryWrapper = new QueryWrapper<>();
         chapterQueryWrapper.eq("course_id", courseId);
 
         List<Chapter> chapters = list(chapterQueryWrapper);
 
-        // 2. 找出章节对应小节(注意：这里的小节是指video
-        QueryWrapper<Video> videoQueryWrapper = new QueryWrapper<>();
-        videoQueryWrapper.eq("course_id", courseId);
-        List<Video> videos = videoService.list(videoQueryWrapper);
+        // 2. 找出章节对应小节
+        QueryWrapper<ChapterPart> chapterPartQueryWrapper = new QueryWrapper<>();
+        chapterPartQueryWrapper.eq("course_id", courseId);
+
+        // 小节列表
+        List<ChapterPart> chapterPartList = chapterPartService.list(chapterPartQueryWrapper);
 
         List<ChapterTreeNode> chapterTreeNodes = new ArrayList<>();
 
         for (Chapter chapter : chapters) {
+            // 父节点会有一些多于的属性
             ChapterTreeNode parentChapterTreeNode = new ChapterTreeNode();
             BeanUtils.copyProperties(chapter, parentChapterTreeNode);
 
             // 子节点
-            List<ChapterTreeNode> subChapterTreeNodeList = new ArrayList<>();
+            List<ChapterPartTreeNode> chapterPartTreeNodes = new ArrayList<>();
 
-            for (Video video : videos) {
-                if (video.getChapterId().equals(chapter.getId())) {
-                    ChapterTreeNode subChapterTreeNode = new ChapterTreeNode();
-                    BeanUtils.copyProperties(video, subChapterTreeNode);
-                    subChapterTreeNodeList.add(subChapterTreeNode);
+            for (ChapterPart chapterPart : chapterPartList) {
+                if (chapterPart.getChapterId().equals(chapter.getId())) {
+                    ChapterPartTreeNode subChapterTreeNode = new ChapterPartTreeNode();
+                    BeanUtils.copyProperties(chapterPart, subChapterTreeNode);
+                    chapterPartTreeNodes.add(subChapterTreeNode);
                 }
             }
-            parentChapterTreeNode.setChildren(subChapterTreeNodeList);
+            parentChapterTreeNode.setChildren(chapterPartTreeNodes);
             chapterTreeNodes.add(parentChapterTreeNode);
         }
 
         return chapterTreeNodes;
+    }
+
+    @Override
+    public void deleteChaptersByCourseId(String id) {
+        QueryWrapper<Chapter> queryWrapper = new QueryWrapper<>();
+        queryWrapper.eq("course_id", id);
+
+        remove(queryWrapper);
     }
 }

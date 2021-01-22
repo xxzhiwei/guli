@@ -1,0 +1,15 @@
+server:
+  port: 8092
+
+spring:
+  application:
+    name: guli-vod
+  profiles:
+    active: dev
+  servlet:
+    multipart:
+      max-file-size: 1024MB
+      max-request-size: 1024MB
+
+ali-oss-access-keyid: LTAIiE5h3p4dOZAP
+ali-oss-access-keysecret: 5N04xP7NqdYAcc2nsJjYwcopx4Kn7P

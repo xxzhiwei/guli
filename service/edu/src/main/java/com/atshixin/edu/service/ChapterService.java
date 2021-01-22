@@ -1,7 +1,6 @@
 package com.atshixin.edu.service;
 
 import com.atshixin.edu.entity.Chapter;
-import com.atshixin.edu.entity.Course;
 import com.atshixin.edu.pojo.ChapterTreeNode;
 import com.baomidou.mybatisplus.extension.service.IService;
 
@@ -16,5 +15,6 @@ import java.util.List;
  * @since 2021-01-11
  */
 public interface ChapterService extends IService<Chapter> {
-    List<ChapterTreeNode> getTreeNodesById(String courseId);
+    List<ChapterTreeNode> getChapterTreeNodesByCourseId(String courseId);
+    void deleteChaptersByCourseId(String id);
 }

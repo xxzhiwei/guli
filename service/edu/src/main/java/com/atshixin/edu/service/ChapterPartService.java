@@ -1,6 +1,6 @@
 package com.atshixin.edu.service;
 
-import com.atshixin.edu.entity.Video;
+import com.atshixin.edu.entity.ChapterPart;
 import com.baomidou.mybatisplus.extension.service.IService;
 
 /**
@@ -11,6 +11,7 @@ import com.baomidou.mybatisplus.extension.service.IService;
  * @author atshixin
  * @since 2021-01-11
  */
-public interface VideoService extends IService<Video> {
+public interface ChapterPartService extends IService<ChapterPart> {
 
+    void deleteChapterPartByCourseId(String id);
 }

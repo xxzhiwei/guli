@@ -1,6 +1,6 @@
 package com.atshixin.edu.mapper;
 
-import com.atshixin.edu.entity.Video;
+import com.atshixin.edu.entity.ChapterPart;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 
 /**
@@ -11,6 +11,6 @@ import com.baomidou.mybatisplus.core.mapper.BaseMapper;
  * @author atshixin
  * @since 2021-01-11
  */
-public interface VideoMapper extends BaseMapper<Video> {
+public interface ChapterPartMapper extends BaseMapper<ChapterPart> {
 
 }

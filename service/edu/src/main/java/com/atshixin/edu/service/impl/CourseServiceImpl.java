@@ -4,19 +4,18 @@ import com.atshixin.base.exceptionHandler.GuliException;
 import com.atshixin.edu.entity.Course;
 import com.atshixin.edu.entity.CourseDescription;
 import com.atshixin.edu.mapper.CourseMapper;
+import com.atshixin.edu.service.ChapterService;
 import com.atshixin.edu.service.CourseDescriptionService;
 import com.atshixin.edu.service.CourseService;
+import com.atshixin.edu.service.ChapterPartService;
 import com.atshixin.edu.vo.CourseInfo;
 import com.atshixin.edu.vo.CourseListItem;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
-import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import java.util.List;
 
 /**
  * <p>
@@ -31,6 +30,12 @@ public class CourseServiceImpl extends ServiceImpl<CourseMapper, Course> impleme
 
     @Autowired
     private CourseDescriptionService courseDescriptionService;
+
+    @Autowired
+    private ChapterPartService chapterPartService;
+
+    @Autowired
+    private ChapterService chapterService;
 
     @Override
     public String saveCourse(CourseInfo courseInfo) {
@@ -85,13 +90,15 @@ public class CourseServiceImpl extends ServiceImpl<CourseMapper, Course> impleme
         return page;
     }
 
-//    @Override
-//    public Page<Course> getCourses(Integer pageIndex, Integer pageSize, QueryWrapper<Course> queryWrapper) {
-//
-//        Page<Course> page = new Page<>(pageIndex, pageSize);
-//
-//        this.page(page, queryWrapper);
-//
-//        return page;
-//    }
+    @Override
+    public void deleteCourseById(String id) {
+        // 1. 根据课程id删小节
+        chapterPartService.deleteChapterPartByCourseId(id);
+        // 2. 根据课程id删章节
+        chapterService.deleteChaptersByCourseId(id);
+        // 3. 根据课程id删描述
+        courseDescriptionService.removeById(id);
+        // 4. 根据课程id删课程
+        removeById(id);
+    }
 }

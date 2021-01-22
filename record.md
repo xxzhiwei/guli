@@ -9,7 +9,7 @@
 
 + 创建common模块
 + 创建base子项目
-+ edu：配置代码生成（controller、entity、mapper、service
++ edu：配置代码生成（com.atshixin.vod.controller、entity、mapper、service
 + edu：配置启动类（位于包的最外层；服务器信息在resources中
 + edu：配置逻辑删除
 + base：配置swagger（测试+文档，需要在对应子项目【如：edu】引入依赖

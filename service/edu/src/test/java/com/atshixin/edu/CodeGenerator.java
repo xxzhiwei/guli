@@ -52,7 +52,7 @@ public class CodeGenerator {
         PackageConfig pc = new PackageConfig();// com.atshixin.edu
         pc.setParent("com.atshixin");
         pc.setModuleName("edu"); //模块名
-        pc.setController("controller");
+        pc.setController("com.atshixin.vod.controller");
         pc.setEntity("entity");
         pc.setService("service");
         pc.setMapper("mapper");

@@ -14,6 +14,7 @@
     <modules>
         <module>edu</module>
         <module>oss</module>
+        <module>vod</module>
     </modules>
 
     <dependencies>

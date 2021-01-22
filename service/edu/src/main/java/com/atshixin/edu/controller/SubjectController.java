@@ -4,6 +4,7 @@ package com.atshixin.edu.controller;
 import com.atshixin.edu.pojo.SubjectTreeNode;
 import com.atshixin.edu.service.SubjectService;
 import com.atshixin.util.R;
+import com.atshixin.util.ResultHelper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -30,7 +31,7 @@ public class SubjectController {
     @GetMapping("/treeNodes")
     public R getTreeNodes() {
         List<SubjectTreeNode> subjectTreeNodes = subjectService.getTreeNodes();
-        return R.ok().data("items", subjectTreeNodes);
+        return ResultHelper.format(subjectTreeNodes);
     }
 
     @PostMapping("/xlsx")

@@ -10,5 +10,5 @@ import java.util.List;
 @Getter
 @Setter
 public class ChapterTreeNode extends Chapter {
-    private List<ChapterTreeNode> children = new ArrayList<>();
+    private List<ChapterPartTreeNode> children = new ArrayList<>();
 }

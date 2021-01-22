@@ -2,9 +2,11 @@ package com.atshixin.edu.controller;
 
 
 import com.atshixin.edu.entity.Chapter;
+import com.atshixin.edu.pojo.ChapterPartTreeNode;
 import com.atshixin.edu.pojo.ChapterTreeNode;
 import com.atshixin.edu.service.ChapterService;
 import com.atshixin.util.R;
+import com.atshixin.util.ResultHelper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
@@ -29,9 +31,8 @@ public class ChapterController {
 
     @GetMapping("/treeNodes/{courseId}")
     public R getTreeNodes(@PathVariable("courseId") String courseId) {
-        // 无特别说明时，获取的都是list
-        List<ChapterTreeNode> chapterTreeNodes = chapterService.getTreeNodesById(courseId);
-        return R.ok().data("items", chapterTreeNodes);
+        List<ChapterTreeNode> chapterTreeNodes = chapterService.getChapterTreeNodesByCourseId(courseId);
+        return ResultHelper.format(chapterTreeNodes);
     }
 
     @PostMapping

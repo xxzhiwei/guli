@@ -2,8 +2,8 @@ package com.atshixin.edu.controller;
 
 import com.atshixin.edu.entity.Teacher;
 import com.atshixin.edu.service.TeacherService;
-import com.atshixin.edu.util.PagingHelper;
 import com.atshixin.util.R;
+import com.atshixin.util.ResultHelper;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -58,13 +58,13 @@ public class TeacherController {
 
         Page<Teacher> teachers = teacherService.getTeachers(pageIndex, pageSize, queryWrapper);
 
-        return PagingHelper.paging(teachers);
+        return ResultHelper.format(teachers);
     }
 
     @GetMapping("/all")
     public R getTeachers() {
         List<Teacher> teachers = teacherService.list(null);
-        return R.ok().data("items", teachers);
+        return ResultHelper.format(teachers);
     }
 
     @DeleteMapping("/{id}")
@@ -104,7 +104,7 @@ public class TeacherController {
     @GetMapping("/{id}")
     public R getTeacher(@PathVariable String id) {
         Teacher teacher = teacherService.getById(id);
-        return R.ok().data("item", teacher);
+        return ResultHelper.format(teacher);
     }
 }
 

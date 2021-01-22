@@ -3,10 +3,10 @@ package com.atshixin.edu.controller;
 
 import com.atshixin.edu.entity.Course;
 import com.atshixin.edu.service.CourseService;
-import com.atshixin.edu.util.PagingHelper;
 import com.atshixin.edu.vo.CourseInfo;
 import com.atshixin.edu.vo.CourseListItem;
 import com.atshixin.util.R;
+import com.atshixin.util.ResultHelper;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -79,13 +79,13 @@ public class CourseController {
 
         Page<CourseListItem> courses = courseService.getCourses(pageIndex, pageSize, courseQueryWrapper);
 
-        return PagingHelper.paging(courses);
+        return ResultHelper.format(courses);
     }
 
     @GetMapping("/{id}")
     public R getCourseById(@PathVariable String id) {
         CourseInfo courseInfo = courseService.getCourseById(id);
-        return R.ok().data("item", courseInfo);
+        return ResultHelper.format(courseInfo);
     }
 
     @PostMapping
@@ -101,6 +101,12 @@ public class CourseController {
             courseInfo.setId(id);
         }
         courseService.updateCourse(courseInfo);
+        return R.ok();
+    }
+
+    @DeleteMapping("/{id}")
+    public R deleteCourse(@PathVariable String id) {
+        courseService.deleteCourseById(id);
         return R.ok();
     }
 }

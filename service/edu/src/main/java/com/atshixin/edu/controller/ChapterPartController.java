@@ -1,8 +1,8 @@
 package com.atshixin.edu.controller;
 
 
-import com.atshixin.edu.entity.Video;
-import com.atshixin.edu.service.VideoService;
+import com.atshixin.edu.entity.ChapterPart;
+import com.atshixin.edu.service.ChapterPartService;
 import com.atshixin.util.R;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.StringUtils;
@@ -17,16 +17,16 @@ import org.springframework.web.bind.annotation.*;
  * @since 2021-01-11
  */
 @RestController
-@RequestMapping("/edu/videos")
+@RequestMapping("/edu/chapterPart")
 @CrossOrigin
-public class VideoController {
+public class ChapterPartController {
 
     @Autowired
-    private VideoService videoService;
+    private ChapterPartService chapterPartService;
 
     @PostMapping
-    public R addVideo(@RequestBody Video video) {
-        boolean isOK = videoService.save(video);
+    public R addChapterPart(@RequestBody ChapterPart chapterPart) {
+        boolean isOK = chapterPartService.save(chapterPart);
         if (isOK) {
             return R.ok();
         }
@@ -36,11 +36,11 @@ public class VideoController {
     }
 
     @PutMapping("/{id}")
-    public R updateVideoById(@PathVariable String id, @RequestBody Video video) {
-        if (StringUtils.isEmpty(video.getId())) {
-            video.setId(id);
+    public R updateChapterPartById(@PathVariable String id, @RequestBody ChapterPart chapterPart) {
+        if (StringUtils.isEmpty(chapterPart.getId())) {
+            chapterPart.setId(id);
         }
-        boolean isOK = videoService.updateById(video);
+        boolean isOK = chapterPartService.updateById(chapterPart);
         if (isOK) {
             return R.ok();
         }
@@ -50,8 +50,8 @@ public class VideoController {
     }
 
     @DeleteMapping("/{id}")
-    public R deleteVideoById(@PathVariable(value = "id") String videoId) {
-        boolean isOK = videoService.removeById(videoId);
+    public R deleteChapterPartById(@PathVariable(value = "id") String id) {
+        boolean isOK = chapterPartService.removeById(id);
         if (isOK) {
             return R.ok();
         }

@@ -21,14 +21,14 @@ import lombok.experimental.Accessors;
 @Data
 @EqualsAndHashCode(callSuper = false)
 @Accessors(chain = true)
-@TableName("edu_video")
+@TableName("edu_video") // 这个表就是小节
 @ApiModel(value="Video对象", description="课程视频")
-public class Video implements Serializable {
+public class ChapterPart implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
     @ApiModelProperty(value = "视频ID")
-    @TableId(value = "id", type = IdType.ASSIGN_UUID)
+    @TableId(value = "id", type = IdType.ASSIGN_ID)
     private String id;
 
     @ApiModelProperty(value = "课程ID")
@@ -58,7 +58,7 @@ public class Video implements Serializable {
     @ApiModelProperty(value = "视频时长（秒）")
     private Float duration;
 
-    @ApiModelProperty(value = "Empty未上传 Transcoding转码中  Normal正常")
+    @ApiModelProperty(value = "Empty未上传 Transcoding 转码中  Normal正常")
     private String status;
 
     @ApiModelProperty(value = "视频源文件大小（字节）")
