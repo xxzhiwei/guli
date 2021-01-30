@@ -14,5 +14,5 @@ import com.baomidou.mybatisplus.extension.service.IService;
  * @since 2021-01-02
  */
 public interface TeacherService extends IService<Teacher> {
-    Page<Teacher> getTeachers(Integer pageIndex, Integer pageSize, QueryWrapper<Teacher> queryWrapper);
+    Page<Teacher> getTeachers(Integer current, Integer size, QueryWrapper<Teacher> queryWrapper);
 }

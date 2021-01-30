@@ -1,8 +1,0 @@
-2021-01-22 14:43:49.278 [http-nio-8090-exec-2] ERROR c.a.base.exceptionHandler.GlobalExceptionHandler - 
-### Error updating database.  Cause: com.mysql.cj.jdbc.exceptions.MysqlDataTruncation: Data truncation: Data too long for column 'id' at row 1
-### The error may exist in com/atshixin/edu/mapper/ChapterPartMapper.java (best guess)
-### The error may involve com.atshixin.edu.mapper.ChapterPartMapper.insert-Inline
-### The error occurred while setting parameters
-### SQL: INSERT INTO edu_video  ( id, course_id, chapter_id, title,  video_original_name, sort,  is_free,     gmt_create, gmt_modified )  VALUES  ( ?, ?, ?, ?,  ?, ?,  ?,     ?, ? )
-### Cause: com.mysql.cj.jdbc.exceptions.MysqlDataTruncation: Data truncation: Data too long for column 'id' at row 1
-; Data truncation: Data too long for column 'id' at row 1; nested exception is com.mysql.cj.jdbc.exceptions.MysqlDataTruncation: Data truncation: Data too long for column 'id' at row 1

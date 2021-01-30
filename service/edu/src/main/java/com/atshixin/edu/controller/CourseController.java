@@ -1,17 +1,21 @@
 package com.atshixin.edu.controller;
 
 
+import com.atshixin.base.exceptionHandler.GuliException;
 import com.atshixin.edu.entity.Course;
 import com.atshixin.edu.service.CourseService;
 import com.atshixin.edu.vo.CourseInfo;
 import com.atshixin.edu.vo.CourseListItem;
 import com.atshixin.util.R;
+import com.atshixin.util.ResultCode;
 import com.atshixin.util.ResultHelper;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.Map;
 
 /**
  * <p>
@@ -31,8 +35,8 @@ public class CourseController {
 
     @GetMapping
     public R getCourses(
-            @RequestParam("pageIndex") Integer pageIndex,
-            @RequestParam("pageSize") Integer pageSize,
+            @RequestParam(value = "current", required = false) Integer current,
+            @RequestParam(value = "size", required = false) Integer size,
             @RequestParam(value = "title", required = false) String title,
             @RequestParam(value = "begin", required = false) String begin,
             @RequestParam(value = "end", required = false) String end,
@@ -44,6 +48,8 @@ public class CourseController {
     ) {
 
         QueryWrapper<Course> courseQueryWrapper = new QueryWrapper<>();
+
+        courseQueryWrapper.ne("ec.is_deleted", 1);
 
         if (!StringUtils.isEmpty(title)) {
             courseQueryWrapper.like("ec.title", title);
@@ -77,9 +83,9 @@ public class CourseController {
             courseQueryWrapper.le("ec.price", maxPrice);
         }
 
-        Page<CourseListItem> courses = courseService.getCourses(pageIndex, pageSize, courseQueryWrapper);
+        Page<CourseListItem> page = courseService.getCourses(current, size, courseQueryWrapper);
 
-        return ResultHelper.format(courses);
+        return ResultHelper.format(page);
     }
 
     @GetMapping("/{id}")
@@ -96,17 +102,28 @@ public class CourseController {
     }
 
     @PutMapping("/{id}")
-    public R updateCourse(@PathVariable String id, @RequestBody CourseInfo courseInfo) {
+    public R updateCourse(@PathVariable("id") String courseId, @RequestBody CourseInfo courseInfo) {
         if (StringUtils.isEmpty(courseInfo.getId())) {
-            courseInfo.setId(id);
+            courseInfo.setId(courseId);
         }
         courseService.updateCourse(courseInfo);
         return R.ok();
     }
 
     @DeleteMapping("/{id}")
-    public R deleteCourse(@PathVariable String id) {
-        courseService.deleteCourseById(id);
+    public R deleteCourseById(@PathVariable("id") String courseId) {
+        courseService.deleteCourseById(courseId);
+        return R.ok();
+    }
+
+    @PatchMapping("/{id}/status")
+    public R updateCourseStatusById(@PathVariable("id") String courseId, @RequestBody Map<String, String> parametersMap) {
+        String status = parametersMap.get("status");
+
+        if (StringUtils.isEmpty(status)) {
+            throw new GuliException(ResultCode.ERROR, "状态不能为空");
+        }
+        courseService.updateCourseStatusById(courseId, status);
         return R.ok();
     }
 }

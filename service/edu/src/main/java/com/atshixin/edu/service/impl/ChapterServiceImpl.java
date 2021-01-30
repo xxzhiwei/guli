@@ -31,7 +31,7 @@ public class ChapterServiceImpl extends ServiceImpl<ChapterMapper, Chapter> impl
     private ChapterPartService chapterPartService;
 
     @Override
-    public List<ChapterTreeNode> getChapterTreeNodesByCourseId(String courseId) {
+    public List<ChapterTreeNode> getChapterTreeNodesById(String courseId) {
         // 1. 查出所有课程对应章节
         QueryWrapper<Chapter> chapterQueryWrapper = new QueryWrapper<>();
         chapterQueryWrapper.eq("course_id", courseId);
@@ -70,9 +70,9 @@ public class ChapterServiceImpl extends ServiceImpl<ChapterMapper, Chapter> impl
     }
 
     @Override
-    public void deleteChaptersByCourseId(String id) {
+    public void deleteChaptersById(String courseId) {
         QueryWrapper<Chapter> queryWrapper = new QueryWrapper<>();
-        queryWrapper.eq("course_id", id);
+        queryWrapper.eq("course_id", courseId);
 
         remove(queryWrapper);
     }

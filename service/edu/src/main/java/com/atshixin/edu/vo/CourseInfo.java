@@ -17,4 +17,5 @@ public class CourseInfo {
     private Integer lessonNum;
     private String cover;
     private String description;
+    private String status;
 }

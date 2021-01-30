@@ -21,7 +21,9 @@ public interface CourseService extends IService<Course> {
 
     String saveCourse(CourseInfo courseInfo);
     void updateCourse(CourseInfo courseInfo);
-    CourseInfo getCourseById(String id);
-    Page<CourseListItem> getCourses(Integer pageIndex, Integer pageSize, QueryWrapper<Course> queryWrapper);
-    void deleteCourseById(String id);
+    CourseInfo getCourseById(String courseId);
+    Page<CourseListItem> getCourses(Integer current, Integer size, QueryWrapper<Course> queryWrapper);
+    void deleteCourseById(String courseId);
+
+    void updateCourseStatusById(String courseId, String status);
 }

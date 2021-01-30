@@ -33,7 +33,7 @@ public class CodeGenerator {
          * UcenterService
          * */
         gc.setServiceName("%sService");	//去掉Service接口的首字母I
-        gc.setIdType(IdType.ASSIGN_UUID); //主键策略 (long -> ID_WORKER；string -> ID_WORKER_STR
+        gc.setIdType(IdType.ASSIGN_ID); //主键策略 (long -> ID_WORKER；string -> ID_WORKER_STR
         gc.setDateType(DateType.ONLY_DATE);//定义生成的实体类中日期类型
         gc.setSwagger2(true);//开启Swagger2模式
 
@@ -52,7 +52,7 @@ public class CodeGenerator {
         PackageConfig pc = new PackageConfig();// com.atshixin.edu
         pc.setParent("com.atshixin");
         pc.setModuleName("edu"); //模块名
-        pc.setController("com.atshixin.vod.controller");
+        pc.setController("com.atshixin.cms.controller");
         pc.setEntity("entity");
         pc.setService("service");
         pc.setMapper("mapper");
@@ -60,7 +60,7 @@ public class CodeGenerator {
 
         // 5、策略配置
         StrategyConfig strategy = new StrategyConfig();
-        strategy.setInclude("edu_video");
+        strategy.setInclude("edu_banner");
         strategy.setNaming(NamingStrategy.underline_to_camel);//数据库表映射到实体的命名策略
         strategy.setTablePrefix(pc.getModuleName() + "_"); //生成实体时去掉表前缀
 

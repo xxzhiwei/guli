@@ -13,5 +13,5 @@ import com.baomidou.mybatisplus.extension.service.IService;
  */
 public interface ChapterPartService extends IService<ChapterPart> {
 
-    void deleteChapterPartByCourseId(String id);
+    void deleteChapterPartById(String courseId);
 }

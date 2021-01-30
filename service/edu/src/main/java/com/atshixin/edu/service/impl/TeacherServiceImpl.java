@@ -20,8 +20,8 @@ import org.springframework.stereotype.Service;
 public class TeacherServiceImpl extends ServiceImpl<TeacherMapper, Teacher> implements TeacherService {
 
     @Override
-    public Page<Teacher> getTeachers(Integer pageIndex, Integer pageSize, QueryWrapper<Teacher> queryWrapper) {
-        Page<Teacher> page = new Page<>(pageIndex, pageSize);
+    public Page<Teacher> getTeachers(Integer current, Integer size, QueryWrapper<Teacher> queryWrapper) {
+        Page<Teacher> page = new Page<>(current, size);
 
         this.page(page, queryWrapper);
 

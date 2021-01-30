@@ -10,6 +10,7 @@ import com.atshixin.edu.service.CourseService;
 import com.atshixin.edu.service.ChapterPartService;
 import com.atshixin.edu.vo.CourseInfo;
 import com.atshixin.edu.vo.CourseListItem;
+import com.atshixin.util.ResultCode;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
@@ -59,7 +60,7 @@ public class CourseServiceImpl extends ServiceImpl<CourseMapper, Course> impleme
         boolean isOK = updateById(course);
 
         if (!isOK) {
-            throw new GuliException(20001, "更新课程失败");
+            throw new GuliException(ResultCode.ERROR, "更新课程失败");
         }
 
         CourseDescription courseDescription = new CourseDescription();
@@ -67,7 +68,7 @@ public class CourseServiceImpl extends ServiceImpl<CourseMapper, Course> impleme
 
         boolean isCourseDescriptionOK = courseDescriptionService.updateById(courseDescription);
         if (!isCourseDescriptionOK) {
-            throw new GuliException(20001, "更新课程失败");
+            throw new GuliException(ResultCode.ERROR, "更新课程失败");
         }
     }
 
@@ -84,21 +85,31 @@ public class CourseServiceImpl extends ServiceImpl<CourseMapper, Course> impleme
     }
 
     @Override
-    public Page<CourseListItem> getCourses(Integer pageIndex, Integer pageSize, QueryWrapper<Course> queryWrapper) {
-        Page<CourseListItem> page = new Page<>(pageIndex, pageSize);
+    public Page<CourseListItem> getCourses(Integer current, Integer size, QueryWrapper<Course> queryWrapper) {
+        Page<CourseListItem> page = new Page<>(current, size);
         baseMapper.getCourses(page, queryWrapper);
         return page;
     }
 
     @Override
-    public void deleteCourseById(String id) {
+    public void deleteCourseById(String courseId) {
         // 1. 根据课程id删小节
-        chapterPartService.deleteChapterPartByCourseId(id);
+        chapterPartService.deleteChapterPartById(courseId);
         // 2. 根据课程id删章节
-        chapterService.deleteChaptersByCourseId(id);
+        chapterService.deleteChaptersById(courseId);
         // 3. 根据课程id删描述
-        courseDescriptionService.removeById(id);
+        courseDescriptionService.removeById(courseId);
         // 4. 根据课程id删课程
-        removeById(id);
+        removeById(courseId);
+    }
+
+    @Override
+    public void updateCourseStatusById(String courseId, String status) {
+        Course course = getById(courseId);
+        if (course.getStatus().equals(status)) {
+            throw new GuliException(ResultCode.ERROR, "无需更新状态，courseId：" + courseId);
+        }
+        course.setStatus(status);
+        this.updateById(course);
     }
 }

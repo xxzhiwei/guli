@@ -3,8 +3,10 @@ package com.atshixin.oss.service.impl;
 import com.aliyun.oss.OSS;
 import com.aliyun.oss.OSSClientBuilder;
 import com.aliyun.oss.model.PutObjectRequest;
+import com.atshixin.base.exceptionHandler.GuliException;
 import com.atshixin.oss.service.OssService;
 import com.atshixin.oss.util.PropertiesReader;
+import com.atshixin.util.ResultCode;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
@@ -29,7 +31,6 @@ public class OssServiceImpl implements OssService {
         String accessKeySecret = propertiesReader.getAssessSecret();
         String bucketName = propertiesReader.getBucketName();
         String prefix = propertiesReader.getPrefix();
-        String url = null;
 
         try {
             // 创建OSSClient实例
@@ -54,11 +55,11 @@ public class OssServiceImpl implements OssService {
             // 关闭OSSClient
             ossClient.shutdown();
             // https://guli-shixin.oss-cn-guangzhou.aliyuncs.com/2021/01/06IMG_7115.PNG
-            url = prefix + bucketName + "." + endpoint + "/" + filePath;
+            return prefix + bucketName + "." + endpoint + "/" + filePath;
         } catch (Exception e) {
             e.printStackTrace();
+            throw new GuliException(ResultCode.ERROR, "上传图片失败");
         }
-        return url;
     }
 
     public static void main(String[] args) {

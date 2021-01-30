@@ -2,7 +2,6 @@ package com.atshixin.edu.controller;
 
 
 import com.atshixin.edu.entity.Chapter;
-import com.atshixin.edu.pojo.ChapterPartTreeNode;
 import com.atshixin.edu.pojo.ChapterTreeNode;
 import com.atshixin.edu.service.ChapterService;
 import com.atshixin.util.R;
@@ -29,9 +28,9 @@ public class ChapterController {
     @Autowired
     private ChapterService chapterService;
 
-    @GetMapping("/treeNodes/{courseId}")
-    public R getTreeNodes(@PathVariable("courseId") String courseId) {
-        List<ChapterTreeNode> chapterTreeNodes = chapterService.getChapterTreeNodesByCourseId(courseId);
+    @GetMapping("/treeNodes/{id}")
+    public R getTreeNodesById(@PathVariable("id") String courseId) {
+        List<ChapterTreeNode> chapterTreeNodes = chapterService.getChapterTreeNodesById(courseId);
         return ResultHelper.format(chapterTreeNodes);
     }
 
@@ -49,9 +48,9 @@ public class ChapterController {
     }
 
     @PutMapping("/{id}")
-    public R updateChapterById(@PathVariable String id, @RequestBody Chapter chapter) {
+    public R updateChapterById(@PathVariable("id") String chapterId, @RequestBody Chapter chapter) {
         if (StringUtils.isEmpty(chapter.getId())) {
-            chapter.setId(id);
+            chapter.setId(chapterId);
         }
         boolean isOK = chapterService.updateById(chapter);
         if (isOK) {

@@ -15,6 +15,6 @@ import java.util.List;
  * @since 2021-01-11
  */
 public interface ChapterService extends IService<Chapter> {
-    List<ChapterTreeNode> getChapterTreeNodesByCourseId(String courseId);
-    void deleteChaptersByCourseId(String id);
+    List<ChapterTreeNode> getChapterTreeNodesById(String courseId);
+    void deleteChaptersById(String courseId);
 }

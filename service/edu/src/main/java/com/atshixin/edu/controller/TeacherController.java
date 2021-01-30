@@ -1,5 +1,6 @@
 package com.atshixin.edu.controller;
 
+import com.atshixin.base.QueryParameter;
 import com.atshixin.edu.entity.Teacher;
 import com.atshixin.edu.service.TeacherService;
 import com.atshixin.util.R;
@@ -29,47 +30,50 @@ public class TeacherController {
     private TeacherService teacherService;
 
     /**
-     * 默认是分页，其他需要在定义路由；如想要获取全部的话，应该为/edu/teachers/all
+     * 若传递「all」，则忽略其他参数查询全部
      */
     @GetMapping
     public R getTeachers(
-            @RequestParam Integer pageIndex, @RequestParam Integer pageSize,
+            @RequestParam(value = "current", required = false) Integer current,
+            @RequestParam(value = "size", required = false) Integer size,
             @RequestParam(required = false) String name, @RequestParam(required = false) Integer level,
-            @RequestParam(required = false) String begin, @RequestParam(required = false) String end
+            @RequestParam(required = false) String begin, @RequestParam(required = false) String end,
+            @RequestParam(required = false, defaultValue = "0") Integer all
     ) {
-        QueryWrapper<Teacher> queryWrapper = new QueryWrapper<>();
 
-        if (!StringUtils.isEmpty(name)) {
-            queryWrapper.like("name", name);
+        if (all.equals(QueryParameter.ALL)) {
+            List<Teacher> teachers = teacherService.list(null);
+            return ResultHelper.format(teachers);
         }
+        else {
+            QueryWrapper<Teacher> queryWrapper = new QueryWrapper<>();
 
-        // 如果传入为null，该方法会返回true
-        if (!StringUtils.isEmpty(level)) {
-            queryWrapper.eq("level", level);
+            if (!StringUtils.isEmpty(name)) {
+                queryWrapper.like("name", name);
+            }
+
+            // 如果传入为null，该方法会返回true
+            if (!StringUtils.isEmpty(level)) {
+                queryWrapper.eq("level", level);
+            }
+
+            if (!StringUtils.isEmpty(begin)) {
+                queryWrapper.ge("gmt_create", begin);
+            }
+
+            if (!StringUtils.isEmpty(end)) {
+                queryWrapper.le("gmt_create", end);
+            }
+
+            Page<Teacher> page = teacherService.getTeachers(current, size, queryWrapper);
+
+            return ResultHelper.format(page);
         }
-
-        if (!StringUtils.isEmpty(begin)) {
-            queryWrapper.ge("gmt_create", begin);
-        }
-
-        if (!StringUtils.isEmpty(end)) {
-            queryWrapper.le("gmt_create", end);
-        }
-
-        Page<Teacher> teachers = teacherService.getTeachers(pageIndex, pageSize, queryWrapper);
-
-        return ResultHelper.format(teachers);
-    }
-
-    @GetMapping("/all")
-    public R getTeachers() {
-        List<Teacher> teachers = teacherService.list(null);
-        return ResultHelper.format(teachers);
     }
 
     @DeleteMapping("/{id}")
-    public R deleteTeacher(@PathVariable String id) {
-        boolean isOK = teacherService.removeById(id);
+    public R deleteTeacher(@PathVariable("id") String teacherId) {
+        boolean isOK = teacherService.removeById(teacherId);
         if (isOK) {
             return R.ok();
         }
@@ -90,8 +94,10 @@ public class TeacherController {
     }
 
     @PutMapping("/{id}")
-    public R updateTeacher(@PathVariable String id, @RequestBody Teacher teacher) {
-        teacher.setId(id);
+    public R updateTeacher(@PathVariable("id") String teacherId, @RequestBody Teacher teacher) {
+        if (StringUtils.isEmpty(teacher.getId())) {
+            teacher.setId(teacherId);
+        }
         boolean isOK = teacherService.updateById(teacher);
         if (isOK) {
             return R.ok();
@@ -102,8 +108,8 @@ public class TeacherController {
     }
 
     @GetMapping("/{id}")
-    public R getTeacher(@PathVariable String id) {
-        Teacher teacher = teacherService.getById(id);
+    public R getTeacher(@PathVariable("id") String teacherId) {
+        Teacher teacher = teacherService.getById(teacherId);
         return ResultHelper.format(teacher);
     }
 }

@@ -8,6 +8,7 @@ import com.atshixin.edu.mapper.SubjectMapper;
 import com.atshixin.edu.pojo.ExcelSubject;
 import com.atshixin.edu.pojo.SubjectTreeNode;
 import com.atshixin.edu.service.SubjectService;
+import com.atshixin.util.ResultCode;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
@@ -40,7 +41,7 @@ public class SubjectServiceImpl extends ServiceImpl<SubjectMapper, Subject> impl
             ).sheet().doRead();
         } catch (IOException e) {
             e.printStackTrace();
-            throw new GuliException(20001, "保存excel数据发生错误");
+            throw new GuliException(ResultCode.ERROR, "保存excel数据发生错误");
         }
     }
 
