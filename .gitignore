@@ -33,3 +33,6 @@ build/
 
 ### VS Code ###
 .vscode/
+
+# 启动文件
+application.*

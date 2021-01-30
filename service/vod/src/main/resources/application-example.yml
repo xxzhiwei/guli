@@ -15,5 +15,5 @@ spring:
       discovery:
         server-addr: 127.0.0.1:8848
 
-ali-oss-access-keyid: LTAIiE5h3p4dOZAP
-ali-oss-access-keysecret: 5N04xP7NqdYAcc2nsJjYwcopx4Kn7P
+ali-oss-access-keyid: your-accesskey
+ali-oss-access-keysecret: your-secret
