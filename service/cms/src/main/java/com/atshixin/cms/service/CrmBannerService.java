@@ -5,6 +5,8 @@ import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.IService;
 
+import java.util.List;
+
 /**
  * <p>
  * 首页banner表 服务类
@@ -15,4 +17,6 @@ import com.baomidou.mybatisplus.extension.service.IService;
  */
 public interface CrmBannerService extends IService<CrmBanner> {
     Page<CrmBanner> getBanners(Integer current, Integer size, QueryWrapper<CrmBanner> queryWrapper);
+
+    List<CrmBanner> getBanners();
 }

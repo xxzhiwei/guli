@@ -8,6 +8,8 @@ import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 /**
  * <p>
  * 首页banner表 服务实现类
@@ -24,5 +26,17 @@ public class CrmBannerServiceImpl extends ServiceImpl<CrmBannerMapper, CrmBanner
         Page<CrmBanner> page = new Page<>(current, size);
         baseMapper.getBanners(page, queryWrapper);
         return page;
+    }
+
+    @Override
+    public List<CrmBanner> getBanners() {
+
+        QueryWrapper<CrmBanner> queryWrapper = new QueryWrapper<>();
+
+        queryWrapper.orderByDesc("id");
+        queryWrapper.last("limit 4");
+
+        List<CrmBanner> banners = list(queryWrapper);
+        return banners;
     }
 }
