@@ -30,7 +30,7 @@ public class TeacherController {
     private TeacherService teacherService;
 
     /**
-     * 若传递「all」，则忽略其他参数查询全部
+     * ps：若传递「all=1」，则忽略其他参数查询全部
      */
     @GetMapping
     public R getTeachers(
@@ -40,7 +40,6 @@ public class TeacherController {
             @RequestParam(required = false) String begin, @RequestParam(required = false) String end,
             @RequestParam(required = false, defaultValue = "0") Integer all
     ) {
-
         if (all.equals(QueryParameter.ALL)) {
             List<Teacher> teachers = teacherService.list(null);
             return ResultHelper.format(teachers);

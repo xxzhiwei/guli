@@ -4,7 +4,6 @@ import com.atshixin.cms.entity.CrmBanner;
 import com.atshixin.cms.service.CrmBannerService;
 import com.atshixin.util.R;
 import com.atshixin.util.ResultHelper;
-import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;

@@ -12,7 +12,6 @@
     <artifactId>guli-service</artifactId>
     <packaging>pom</packaging>
     <modules>
-        <module>edu</module>
         <module>oss</module>
         <module>vod</module>
         <module>cms</module>
