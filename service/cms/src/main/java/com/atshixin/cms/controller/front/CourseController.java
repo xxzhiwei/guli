@@ -31,5 +31,11 @@ public class CourseController {
         List<Course> courses = courseService.getCourses();
         return ResultHelper.format(courses);
     }
+
+    @GetMapping("{id}")
+    public R getCourse(@PathVariable("id") String courseId) {
+        Course course = courseService.getById(courseId);
+        return ResultHelper.format(course);
+    }
 }
 
