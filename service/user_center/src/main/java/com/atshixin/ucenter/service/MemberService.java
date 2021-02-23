@@ -1,5 +1,7 @@
 package com.atshixin.ucenter.service;
 
+import com.atshixin.ucenter.dto.LoginDto;
+import com.atshixin.ucenter.dto.RegisterDto;
 import com.atshixin.ucenter.entity.Member;
 import com.atshixin.ucenter.vo.LoginVo;
 import com.atshixin.ucenter.vo.RegisterVo;
@@ -14,7 +16,7 @@ import com.baomidou.mybatisplus.extension.service.IService;
  * @since 2021-02-22
  */
 public interface MemberService extends IService<Member> {
-    String login(LoginVo loginVo);
+    String login(LoginDto loginDto);
 
-    void register(RegisterVo registerVo);
+    void register(RegisterDto registerDto);
 }

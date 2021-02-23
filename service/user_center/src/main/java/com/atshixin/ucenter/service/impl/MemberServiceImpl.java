@@ -1,6 +1,8 @@
 package com.atshixin.ucenter.service.impl;
 
 import com.atshixin.base.exceptionHandler.GuliException;
+import com.atshixin.ucenter.dto.LoginDto;
+import com.atshixin.ucenter.dto.RegisterDto;
 import com.atshixin.ucenter.entity.Member;
 import com.atshixin.ucenter.mapper.MemberMapper;
 import com.atshixin.ucenter.service.MemberService;
@@ -26,10 +28,10 @@ import org.springframework.util.StringUtils;
 public class MemberServiceImpl extends ServiceImpl<MemberMapper, Member> implements MemberService {
 
     @Override
-    public String login(LoginVo loginVo) {
+    public String login(LoginDto loginDto) {
 
-        String phone = loginVo.getPhone();
-        String password = loginVo.getPassword();
+        String phone = loginDto.getMobile();
+        String password = loginDto.getPassword();
 
         // 1. 非空校验
         if (StringUtils.isEmpty(phone) || StringUtils.isEmpty(password)) {
@@ -60,13 +62,12 @@ public class MemberServiceImpl extends ServiceImpl<MemberMapper, Member> impleme
     }
 
     @Override
-    public void register(RegisterVo registerVo) {
+    public void register(RegisterDto registerDto) {
 
-        String nickname = registerVo.getNickname();
-        String password = registerVo.getPassword();
-        String code = registerVo.getCode();
-        String mobile = registerVo.getMobile();
-
+        String nickname = registerDto.getNickname();
+        String password = registerDto.getPassword();
+        String code = registerDto.getCode();
+        String mobile = registerDto.getMobile();
 
         QueryWrapper<Member> queryWrapper = new QueryWrapper<>();
 

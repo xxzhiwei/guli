@@ -26,7 +26,7 @@ public class JWT {
     }
 
     public static String generateToken(String userId, String userName) {
-        String jwtToken = Jwts.builder()
+        return Jwts.builder()
                 .setHeaderParam("typ", "JWT")
                 .setHeaderParam("alg", "HS256")
                 .setSubject("guli-user")
@@ -35,7 +35,6 @@ public class JWT {
                 .claim("userName", userName)
                 .signWith(SignatureAlgorithm.HS256, SECRET)
                 .compact();
-        return jwtToken;
     }
 
     public static String getUserIdByToken(String token) {
