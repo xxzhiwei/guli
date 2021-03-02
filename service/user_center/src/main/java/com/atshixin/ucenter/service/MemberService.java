@@ -5,7 +5,10 @@ import com.atshixin.ucenter.dto.RegisterDto;
 import com.atshixin.ucenter.entity.Member;
 import com.atshixin.ucenter.vo.LoginVo;
 import com.atshixin.ucenter.vo.RegisterVo;
+import com.atshixin.util.TokenR;
 import com.baomidou.mybatisplus.extension.service.IService;
+
+import java.util.Map;
 
 /**
  * <p>
@@ -16,7 +19,7 @@ import com.baomidou.mybatisplus.extension.service.IService;
  * @since 2021-02-22
  */
 public interface MemberService extends IService<Member> {
-    String login(LoginDto loginDto);
+    TokenR login(LoginDto loginDto);
 
     void register(RegisterDto registerDto);
 }

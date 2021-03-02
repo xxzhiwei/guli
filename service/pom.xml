@@ -9,20 +9,21 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>guli-service</artifactId>
+    <artifactId>service</artifactId>
     <packaging>pom</packaging>
     <modules>
         <module>oss</module>
         <module>vod</module>
         <module>cms</module>
         <module>user_center</module>
+        <module>edu</module>
     </modules>
 
     <dependencies>
 
         <dependency>
             <groupId>com.atshixin</groupId>
-            <artifactId>guli-base</artifactId>
+            <artifactId>base</artifactId>
             <version>0.0.1-SNAPSHOT</version>
         </dependency>
 

@@ -1,4 +1,4 @@
-package com.atshixin.ucenter;
+package com.atshixin.edu;
 
 import com.baomidou.mybatisplus.annotation.DbType;
 import com.baomidou.mybatisplus.annotation.IdType;
@@ -50,8 +50,8 @@ public class CodeGenerator {
         // 4、包配置
         PackageConfig pc = new PackageConfig();// com.atshixin.edu
         pc.setParent("com.atshixin");
-        pc.setModuleName("ucenter"); //模块名
-        pc.setController("controller");
+        pc.setModuleName("cms"); //模块名
+        pc.setController("com.atshixin.edu.controller");
         pc.setEntity("entity");
         pc.setService("service");
         pc.setMapper("mapper");
@@ -59,7 +59,7 @@ public class CodeGenerator {
 
         // 5、策略配置
         StrategyConfig strategy = new StrategyConfig();
-        strategy.setInclude("ucenter_member");
+        strategy.setInclude("crm_banner");
         strategy.setNaming(NamingStrategy.underline_to_camel);//数据库表映射到实体的命名策略
         strategy.setTablePrefix(pc.getModuleName() + "_"); //生成实体时去掉表前缀
 

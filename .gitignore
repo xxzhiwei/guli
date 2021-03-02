@@ -36,3 +36,6 @@ build/
 
 # 启动文件
 application.*
+
+# maven
+.mvn

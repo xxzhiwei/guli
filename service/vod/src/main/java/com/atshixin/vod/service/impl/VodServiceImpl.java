@@ -59,7 +59,7 @@ public class VodServiceImpl implements VodService {
     }
 
     private void deleteVideoHandler(String idStr) {
-        DefaultAcsClient client = VodClient.init(propertiesReader.getAssessKeyId(), propertiesReader.getAssessSecret());
+        DefaultAcsClient client = VodClient.init(propertiesReader.getRegionId(), propertiesReader.getAssessKeyId(), propertiesReader.getAssessSecret());
         DeleteVideoRequest request = new DeleteVideoRequest();
         request.setVideoIds(idStr);
         try {

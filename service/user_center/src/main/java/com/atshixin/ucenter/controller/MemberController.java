@@ -1,13 +1,19 @@
 package com.atshixin.ucenter.controller;
 
+import com.atshixin.base.exceptionHandler.GuliException;
 import com.atshixin.ucenter.dto.LoginDto;
 import com.atshixin.ucenter.dto.RegisterDto;
 import com.atshixin.ucenter.entity.Member;
 import com.atshixin.ucenter.service.MemberService;
+import com.atshixin.util.JWT;
 import com.atshixin.util.R;
 import com.atshixin.util.ResultHelper;
+import com.atshixin.util.TokenR;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
+
+import javax.servlet.http.HttpServletRequest;
 
 /**
  * <p>
@@ -25,6 +31,13 @@ public class MemberController {
     @Autowired
     private MemberService memberService;
 
+    @GetMapping
+    public R getUserInfo(HttpServletRequest request) {
+        String id = JWT.getUserIdByToken(request);
+        Member member = memberService.getById(id);
+        return ResultHelper.format(member);
+    }
+
     @GetMapping("/{id}")
     public R getUserInfo(@PathVariable("id") String userId) {
         Member user = memberService.getById(userId);
@@ -33,8 +46,8 @@ public class MemberController {
 
     @PostMapping("/login")
     public R login(@RequestBody LoginDto loginDto) {
-        String token = memberService.login(loginDto);
-        return R.ok().data("token", token);
+        TokenR tokenR = memberService.login(loginDto);
+        return ResultHelper.format(tokenR);
     }
 
     @PostMapping("/register")

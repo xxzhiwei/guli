@@ -1,20 +1,14 @@
 package com.atshixin.ucenter.service.impl;
 
-import com.atshixin.base.exceptionHandler.GuliException;
-import com.atshixin.ucenter.dto.LoginDto;
-import com.atshixin.ucenter.dto.RegisterDto;
 import com.atshixin.ucenter.entity.Member;
 import com.atshixin.ucenter.mapper.MemberMapper;
-import com.atshixin.ucenter.service.MemberService;
-import com.atshixin.ucenter.vo.LoginVo;
-import com.atshixin.ucenter.vo.RegisterVo;
-import com.atshixin.util.JWT;
-import com.atshixin.util.MD5;
-import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.atshixin.ucenter.service.WeChatService;
+import com.atshixin.util.R;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.stereotype.Service;
-import org.springframework.util.ObjectUtils;
-import org.springframework.util.StringUtils;
+
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * <p>
@@ -25,69 +19,31 @@ import org.springframework.util.StringUtils;
  * @since 2021-02-22
  */
 @Service
-public class MemberServiceImpl extends ServiceImpl<MemberMapper, Member> implements MemberService {
+public class WeChatServiceImpl extends ServiceImpl<MemberMapper, Member> implements WeChatService {
 
     @Override
-    public String login(LoginDto loginDto) {
-
-        String phone = loginDto.getMobile();
-        String password = loginDto.getPassword();
-
-        // 1. 非空校验
-        if (StringUtils.isEmpty(phone) || StringUtils.isEmpty(password)) {
-            throw new GuliException(20001, "登录失败，手机号或密码不能为空");
-        }
-
-        // 2. 校验手机号是否正确
-        QueryWrapper<Member> queryWrapper = new QueryWrapper<>();
-        queryWrapper.eq("mobile", phone);
-
-        Member member = baseMapper.selectOne(queryWrapper);
-
-        if (member == null) {
-            throw new GuliException(20001, "登录失败，该手机号尚未注册");
-        }
-
-        // 3. 校验密码
-        if (!MD5.encrypt(password).equals(member.getPassword())) {
-            throw new GuliException(20001, "登录失败，手机号或密码错误");
-        }
-
-        // 4. 用户是否被禁用
-        if (member.getIsDisabled()) {
-            throw new GuliException(20001, "登录失败，该用户已被禁用");
-        }
-
-        return JWT.generateToken(member.getId(), member.getNickname());
+    public R login() {
+        return null;
     }
 
     @Override
-    public void register(RegisterDto registerDto) {
+    public void getCode() {
 
-        String nickname = registerDto.getNickname();
-        String password = registerDto.getPassword();
-        String code = registerDto.getCode();
-        String mobile = registerDto.getMobile();
+        Map<String, String> codeParams = new HashMap<>();
+        // appid, redirect_uri, response_type, scope
+        codeParams.put("appid", "");
+        codeParams.put("redirect_uri", "");
+        codeParams.put("response_type", "code");
+        codeParams.put("scope", "snsapi_login");
+    }
 
-        QueryWrapper<Member> queryWrapper = new QueryWrapper<>();
+    @Override
+    public void getInfoByCode() {
 
-        queryWrapper.eq("mobile", mobile);
+    }
 
-        Member member = baseMapper.selectOne(queryWrapper);
+    @Override
+    public void getUserInfo() {
 
-        if (!ObjectUtils.isEmpty(member)) {
-            throw new GuliException(20001, "该手机号已注册");
-        }
-
-        if (!code.equals("123456")) {
-            throw new GuliException(20001, "验证码错误");
-        }
-
-        Member newMember = new Member();
-        newMember.setNickname(nickname);
-        newMember.setPassword(MD5.encrypt(password));
-        newMember.setMobile(mobile);
-
-        baseMapper.insert(newMember);
     }
 }

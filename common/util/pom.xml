@@ -3,13 +3,13 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
-        <artifactId>guli-common</artifactId>
+        <artifactId>common</artifactId>
         <groupId>com.atshixin</groupId>
         <version>0.0.1-SNAPSHOT</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>guli-util</artifactId>
+    <artifactId>util</artifactId>
 
     <!-- 是不是guli/pom.xml只提供版本，但是也要在其他需要用的地方声明依赖？ -->
     <dependencies>

@@ -6,10 +6,9 @@ import com.atshixin.ucenter.dto.RegisterDto;
 import com.atshixin.ucenter.entity.Member;
 import com.atshixin.ucenter.mapper.MemberMapper;
 import com.atshixin.ucenter.service.MemberService;
-import com.atshixin.ucenter.vo.LoginVo;
-import com.atshixin.ucenter.vo.RegisterVo;
 import com.atshixin.util.JWT;
 import com.atshixin.util.MD5;
+import com.atshixin.util.TokenR;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.stereotype.Service;
@@ -28,7 +27,7 @@ import org.springframework.util.StringUtils;
 public class MemberServiceImpl extends ServiceImpl<MemberMapper, Member> implements MemberService {
 
     @Override
-    public String login(LoginDto loginDto) {
+    public TokenR login(LoginDto loginDto) {
 
         String phone = loginDto.getMobile();
         String password = loginDto.getPassword();
