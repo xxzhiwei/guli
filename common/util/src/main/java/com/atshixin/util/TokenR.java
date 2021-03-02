@@ -11,5 +11,6 @@ import lombok.Setter;
 @Setter
 public class TokenR {
     private String token;
-    private Long expired;
+    private Long expiresTime; // 有效截止时间
+    private Integer expiresDays; // 有效天数
 }

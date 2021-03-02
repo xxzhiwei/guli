@@ -10,7 +10,6 @@ import com.atshixin.util.R;
 import com.atshixin.util.ResultHelper;
 import com.atshixin.util.TokenR;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
@@ -31,10 +30,21 @@ public class MemberController {
     @Autowired
     private MemberService memberService;
 
+    @GetMapping("/token")
+    public R checkToken(HttpServletRequest request) {
+        String token = JWT.getTokenThroughRequest(request);
+        boolean isOK = JWT.checkToken(token);
+        return R.ok().data("valid", isOK);
+    }
+
     @GetMapping
     public R getUserInfo(HttpServletRequest request) {
         String id = JWT.getUserIdByToken(request);
         Member member = memberService.getById(id);
+
+        if (member == null) {
+            throw new GuliException(200001, "获取用户信息失败");
+        }
         return ResultHelper.format(member);
     }
 

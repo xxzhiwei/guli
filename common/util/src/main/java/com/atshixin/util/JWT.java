@@ -7,13 +7,13 @@ import javax.servlet.http.HttpServletRequest;
 import java.util.Date;
 
 public class JWT {
-
-    private static final long EXPIRE = 1000 * 60 * 60 * 24; // token过期时间（一天
+    private static final int EXPIRE_DAYS = 1;
+    private static final long EXPIRE_TIME = 1000 * 60 * 60 * 24 * EXPIRE_DAYS; // token过期时间（一天
 
     private static final String SECRET = "guli-school";
     private static final String PREFIX = "Bearer";
 
-    private static String getTokenThroughRequest(HttpServletRequest request) {
+    public static String getTokenThroughRequest(HttpServletRequest request) {
         String authorization = request.getHeader("Authorization");
 
         if (StringUtils.isEmpty(authorization)) {
@@ -54,7 +54,7 @@ public class JWT {
     }
 
     public static TokenR generateToken(String userId, String userName) {
-        Date expireDate = new Date(System.currentTimeMillis() + EXPIRE);
+        Date expireDate = new Date(System.currentTimeMillis() + EXPIRE_TIME);
         String token = Jwts.builder()
                 .setHeaderParam("typ", "JWT")
                 .setHeaderParam("alg", "HS256")
@@ -64,7 +64,7 @@ public class JWT {
                 .claim("userName", userName)
                 .signWith(SignatureAlgorithm.HS256, SECRET)
                 .compact();
-        return new TokenR(token, expireDate.getTime());
+        return new TokenR(token, expireDate.getTime(), EXPIRE_DAYS);
     }
 
     public static String getUserIdByToken(HttpServletRequest request) {
@@ -84,8 +84,14 @@ public class JWT {
         if (StringUtils.isEmpty(token)) {
             return null;
         }
-        Jws<Claims> claimsJws = Jwts.parser().setSigningKey(SECRET).parseClaimsJws(token);
-        return claimsJws.getBody();
+
+        try {
+            Jws<Claims> claimsJws = Jwts.parser().setSigningKey(SECRET).parseClaimsJws(token);
+            return claimsJws.getBody();
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
     }
 
     public static void main(String[] args) {
