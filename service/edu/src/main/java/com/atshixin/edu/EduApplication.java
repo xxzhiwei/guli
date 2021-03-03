@@ -10,8 +10,8 @@ import org.springframework.context.annotation.ComponentScan;
 @EnableDiscoveryClient
 @EnableFeignClients
 @ComponentScan(basePackages = {"com.atshixin"})
-public class EduController {
+public class EduApplication {
     public static void main(String[] args) {
-        SpringApplication.run(EduController.class, args);
+        SpringApplication.run(EduApplication.class, args);
     }
 }

@@ -18,7 +18,7 @@ import java.util.List;
  * @since 2021-01-02
  */
 @RestController
-@RequestMapping("/cms/teachers")
+@RequestMapping("/edu/teachers")
 @CrossOrigin
 public class TeacherController {
 

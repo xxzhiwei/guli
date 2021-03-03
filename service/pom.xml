@@ -14,9 +14,9 @@
     <modules>
         <module>oss</module>
         <module>vod</module>
-        <module>cms</module>
-        <module>user_center</module>
         <module>edu</module>
+        <module>user_center</module>
+<!--        <module>edu</module>-->
     </modules>
 
     <dependencies>
