@@ -1,8 +1,8 @@
 package com.atshixin.edu.controller.admin;
 
-import com.atshixin.base.QueryParameter;
+import com.atshixin.edu.common.DataTypes;
 import com.atshixin.edu.entity.Teacher;
-import com.atshixin.edu.service.TeacherService;
+import com.atshixin.edu.service.AdminTeacherService;
 import com.atshixin.util.R;
 import com.atshixin.util.ResultHelper;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
@@ -23,56 +23,50 @@ import java.util.List;
  */
 @RestController("AdminTeacherController")
 @RequestMapping("/edu/admin/teachers")
-@CrossOrigin
 public class TeacherController {
 
     @Autowired
-    private TeacherService teacherService;
+    private AdminTeacherService adminTeacherService;
 
-    /**
-     * ps：若传递「all=1」，则忽略其他参数查询全部
-     */
     @GetMapping
     public R getTeachers(
-            @RequestParam(value = "current", required = false) Integer current,
-            @RequestParam(value = "size", required = false) Integer size,
+            @RequestParam(value = "current", required = false, defaultValue = "1") Integer current,
+            @RequestParam(value = "size", required = false, defaultValue = "10") Integer size,
             @RequestParam(required = false) String name, @RequestParam(required = false) Integer level,
             @RequestParam(required = false) String begin, @RequestParam(required = false) String end,
-            @RequestParam(required = false, defaultValue = "0") Integer all/* 默认是全部 */
+            @RequestParam(required = false, defaultValue = DataTypes.PAGING) String type
     ) {
-        if (all.equals(QueryParameter.ALL)) {
-            List<Teacher> teachers = teacherService.list(null);
+        if (type.equals(DataTypes.ALL)) {
+            List<Teacher> teachers = adminTeacherService.list(null);
             return ResultHelper.format(teachers);
         }
-        else {
-            QueryWrapper<Teacher> queryWrapper = new QueryWrapper<>();
+        QueryWrapper<Teacher> queryWrapper = new QueryWrapper<>();
 
-            if (!StringUtils.isEmpty(name)) {
-                queryWrapper.like("name", name);
-            }
-
-            // 如果传入为null，该方法会返回true
-            if (!StringUtils.isEmpty(level)) {
-                queryWrapper.eq("level", level);
-            }
-
-            if (!StringUtils.isEmpty(begin)) {
-                queryWrapper.ge("gmt_create", begin);
-            }
-
-            if (!StringUtils.isEmpty(end)) {
-                queryWrapper.le("gmt_create", end);
-            }
-
-            Page<Teacher> page = teacherService.getTeachers(current, size, queryWrapper);
-
-            return ResultHelper.format(page);
+        if (!StringUtils.isEmpty(name)) {
+            queryWrapper.like("name", name);
         }
+
+        // 如果传入为null，该方法会返回true
+        if (!StringUtils.isEmpty(level)) {
+            queryWrapper.eq("level", level);
+        }
+
+        if (!StringUtils.isEmpty(begin)) {
+            queryWrapper.ge("gmt_create", begin);
+        }
+
+        if (!StringUtils.isEmpty(end)) {
+            queryWrapper.le("gmt_create", end);
+        }
+
+        Page<Teacher> page = adminTeacherService.getTeachers(current, size, queryWrapper);
+
+        return ResultHelper.format(page);
     }
 
     @DeleteMapping("/{id}")
     public R deleteTeacher(@PathVariable("id") String teacherId) {
-        boolean isOK = teacherService.removeById(teacherId);
+        boolean isOK = adminTeacherService.removeById(teacherId);
         if (isOK) {
             return R.ok();
         }
@@ -83,7 +77,7 @@ public class TeacherController {
 
     @PostMapping
     public R addTeacher(@RequestBody Teacher teacher) {
-        boolean isOK = teacherService.save(teacher);
+        boolean isOK = adminTeacherService.save(teacher);
         if (isOK) {
             return R.ok();
         }
@@ -97,7 +91,7 @@ public class TeacherController {
         if (StringUtils.isEmpty(teacher.getId())) {
             teacher.setId(teacherId);
         }
-        boolean isOK = teacherService.updateById(teacher);
+        boolean isOK = adminTeacherService.updateById(teacher);
         if (isOK) {
             return R.ok();
         }
@@ -108,7 +102,7 @@ public class TeacherController {
 
     @GetMapping("/{id}")
     public R getTeacher(@PathVariable("id") String teacherId) {
-        Teacher teacher = teacherService.getById(teacherId);
+        Teacher teacher = adminTeacherService.getById(teacherId);
         return ResultHelper.format(teacher);
     }
 }

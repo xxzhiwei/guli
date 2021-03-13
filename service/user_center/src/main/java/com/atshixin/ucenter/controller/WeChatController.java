@@ -35,12 +35,6 @@ public class WeChatController {
     @Autowired
     private MemberService memberService;
 
-    @GetMapping
-    public R login() {
-        weChatService.login();
-        return R.ok();
-    }
-
     /**
      * 生成扫描二维码
      */
@@ -89,26 +83,20 @@ public class WeChatController {
         try {
             // 1. 请求地址返回字符串
             String result = HttpClientUtils.get(url);
-
             // 2. Gson：json转换工具
             Gson gson = new Gson();
-
             // 3. 转换字符串为map
             HashMap resultMap = gson.fromJson(result, HashMap.class);
-
             // 4. 读取access_token、openid
             String accessToken = (String) resultMap.get("access_token");
             String openId = (String) resultMap.get("openid");
-
             Member member = weChatService.getUserByOpenId(openId);
-
             // 5. 查询用户，没有则新建用户（微信）
             if (member == null) {
                 String userInfoBaseUrl = "https://api.weixin.qq.com/sns/userinfo"
                         + "?access_token=%s"
                         + "&openid=%s";
                 String userInfoUrl = String.format(userInfoBaseUrl, accessToken, openId);
-
                 String userInfoResult = HttpClientUtils.get(userInfoUrl);
 
                 HashMap userInfoMap = gson.fromJson(userInfoResult, HashMap.class);

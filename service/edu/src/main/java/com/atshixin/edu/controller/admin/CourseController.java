@@ -2,7 +2,7 @@ package com.atshixin.edu.controller.admin;
 
 
 import com.atshixin.base.exceptionHandler.GuliException;
-import com.atshixin.edu.service.CourseService;
+import com.atshixin.edu.service.AdminCourseService;
 import com.atshixin.edu.entity.Course;
 import com.atshixin.edu.vo.CourseInfo;
 import com.atshixin.edu.vo.CourseListItem;
@@ -31,7 +31,7 @@ import java.util.Map;
 public class CourseController {
 
     @Autowired
-    private CourseService courseService;
+    private AdminCourseService adminCourseService;
 
     @GetMapping
     public R getCourses(
@@ -83,21 +83,21 @@ public class CourseController {
             courseQueryWrapper.le("ec.price", maxPrice);
         }
 
-        Page<CourseListItem> page = courseService.getCourses(current, size, courseQueryWrapper);
+        Page<CourseListItem> page = adminCourseService.getCourses(current, size, courseQueryWrapper);
 
         return ResultHelper.format(page);
     }
 
     @GetMapping("/{id}")
     public R getCourseById(@PathVariable String id) {
-        CourseInfo courseInfo = courseService.getCourseById(id);
+        CourseInfo courseInfo = adminCourseService.getCourseById(id);
         return ResultHelper.format(courseInfo);
     }
 
     @PostMapping
     public R addCourse(@RequestBody CourseInfo courseInfo) {
 
-        String id = courseService.saveCourse(courseInfo);
+        String id = adminCourseService.saveCourse(courseInfo);
         return R.ok().data("id", id);
     }
 
@@ -106,13 +106,13 @@ public class CourseController {
         if (StringUtils.isEmpty(courseInfo.getId())) {
             courseInfo.setId(courseId);
         }
-        courseService.updateCourse(courseInfo);
+        adminCourseService.updateCourse(courseInfo);
         return R.ok();
     }
 
     @DeleteMapping("/{id}")
     public R deleteCourseById(@PathVariable("id") String courseId) {
-        courseService.deleteCourseById(courseId);
+        adminCourseService.deleteCourseById(courseId);
         return R.ok();
     }
 
@@ -123,7 +123,7 @@ public class CourseController {
         if (StringUtils.isEmpty(status)) {
             throw new GuliException(ResultCode.ERROR, "状态不能为空");
         }
-        courseService.updateCourseStatusById(courseId, status);
+        adminCourseService.updateCourseStatusById(courseId, status);
         return R.ok();
     }
 }

@@ -5,7 +5,7 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class BannerVo {
+public class Banner {
     private String id;
 
     private String title;

@@ -2,11 +2,11 @@ package com.atshixin.edu.service.impl;
 
 import com.atshixin.edu.entity.Chapter;
 import com.atshixin.edu.entity.ChapterPart;
-import com.atshixin.edu.pojo.ChapterTreeNode;
+import com.atshixin.edu.vo.ChapterTreeNode;
 import com.atshixin.edu.service.ChapterPartService;
 import com.atshixin.edu.service.ChapterService;
 import com.atshixin.edu.mapper.ChapterMapper;
-import com.atshixin.edu.pojo.ChapterPartTreeNode;
+import com.atshixin.edu.vo.ChapterPartTreeNode;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.beans.BeanUtils;

@@ -3,7 +3,6 @@ package com.atshixin.ucenter.service.impl;
 import com.atshixin.ucenter.entity.Member;
 import com.atshixin.ucenter.mapper.MemberMapper;
 import com.atshixin.ucenter.service.WeChatService;
-import com.atshixin.util.R;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.stereotype.Service;
@@ -18,11 +17,6 @@ import org.springframework.stereotype.Service;
  */
 @Service
 public class WeChatServiceImpl extends ServiceImpl<MemberMapper, Member> implements WeChatService {
-
-    @Override
-    public R login() {
-        return null;
-    }
 
     @Override
     public Member getUserByOpenId(String openId) {

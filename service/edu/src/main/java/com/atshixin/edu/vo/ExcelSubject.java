@@ -1,4 +1,4 @@
-package com.atshixin.edu.pojo;
+package com.atshixin.edu.vo;
 
 import com.alibaba.excel.annotation.ExcelProperty;
 import lombok.Getter;

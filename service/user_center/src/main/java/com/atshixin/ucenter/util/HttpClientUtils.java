@@ -50,8 +50,8 @@ import java.security.cert.X509Certificate;
  */
 public class HttpClientUtils {
 
-    public static final int connTimeout=10000;
-    public static final int readTimeout=10000;
+//    public static final int connTimeout=10000;
+//    public static final int readTimeout=10000;
     public static final String charset="UTF-8";
     private static HttpClient client = null;
 

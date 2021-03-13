@@ -2,8 +2,8 @@ package com.atshixin.edu.controller.admin;
 
 
 import com.atshixin.edu.entity.Chapter;
-import com.atshixin.edu.pojo.ChapterTreeNode;
 import com.atshixin.edu.service.ChapterService;
+import com.atshixin.edu.vo.ChapterTreeNode;
 import com.atshixin.util.R;
 import com.atshixin.util.ResultHelper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,7 +14,7 @@ import java.util.List;
 
 /**
  * <p>
- * 课程 前端控制器
+ * 课程 前端控制器；这种只有在管理后台使用的控制器，不进行区分
  * </p>
  *
  * @author atshixin

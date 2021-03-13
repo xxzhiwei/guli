@@ -1,4 +1,4 @@
-package com.atshixin.edu.pojo;
+package com.atshixin.edu.vo;
 
 import com.atshixin.edu.entity.Chapter;
 import lombok.Getter;

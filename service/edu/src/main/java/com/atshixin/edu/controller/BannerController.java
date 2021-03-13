@@ -1,4 +1,4 @@
-package com.atshixin.edu.controller.front;
+package com.atshixin.edu.controller;
 
 import com.atshixin.edu.entity.CrmBanner;
 import com.atshixin.edu.service.CrmBannerService;
@@ -14,7 +14,6 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/edu/banners")
-@CrossOrigin
 public class BannerController {
 
     @Autowired

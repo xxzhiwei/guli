@@ -1,7 +1,7 @@
 package com.atshixin.edu.service;
 
 import com.atshixin.edu.entity.Subject;
-import com.atshixin.edu.pojo.SubjectTreeNode;
+import com.atshixin.edu.vo.SubjectTreeNode;
 import com.baomidou.mybatisplus.extension.service.IService;
 import org.springframework.web.multipart.MultipartFile;
 

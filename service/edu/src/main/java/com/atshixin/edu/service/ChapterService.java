@@ -1,7 +1,7 @@
 package com.atshixin.edu.service;
 
-import com.atshixin.edu.pojo.ChapterTreeNode;
 import com.atshixin.edu.entity.Chapter;
+import com.atshixin.edu.vo.ChapterTreeNode;
 import com.baomidou.mybatisplus.extension.service.IService;
 
 import java.util.List;

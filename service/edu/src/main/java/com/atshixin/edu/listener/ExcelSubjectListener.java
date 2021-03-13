@@ -5,7 +5,7 @@ import com.alibaba.excel.event.AnalysisEventListener;
 import com.atshixin.base.exceptionHandler.GuliException;
 import com.atshixin.edu.service.SubjectService;
 import com.atshixin.edu.entity.Subject;
-import com.atshixin.edu.pojo.ExcelSubject;
+import com.atshixin.edu.vo.ExcelSubject;
 
 import java.util.ArrayList;
 import java.util.HashMap;
