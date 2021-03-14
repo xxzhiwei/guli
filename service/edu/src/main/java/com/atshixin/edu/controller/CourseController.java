@@ -4,7 +4,10 @@ package com.atshixin.edu.controller;
 import com.atshixin.edu.common.DataTypes;
 import com.atshixin.edu.common.OrderTypes;
 import com.atshixin.edu.entity.Course;
+import com.atshixin.edu.service.ChapterService;
 import com.atshixin.edu.service.CourseService;
+import com.atshixin.edu.vo.ChapterTreeNode;
+import com.atshixin.edu.vo.CourseInfo;
 import com.atshixin.edu.vo.CourseListItem;
 import com.atshixin.util.R;
 import com.atshixin.util.ResultHelper;
@@ -14,7 +17,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * <p>
@@ -30,6 +35,9 @@ public class CourseController {
 
     @Autowired
     private CourseService courseService;
+
+    @Autowired
+    private ChapterService chapterService;
 
     @GetMapping
     public R getCourses(
@@ -78,8 +86,12 @@ public class CourseController {
 
     @GetMapping("{id}")
     public R getCourse(@PathVariable("id") String courseId) {
-        Course course = courseService.getById(courseId);
-        return ResultHelper.format(course);
+        CourseListItem courseListItem = courseService.getCourseById(courseId);
+        List<ChapterTreeNode> nodes = chapterService.getChapterTreeNodesById(courseId);
+        Map<String, Object> map = new HashMap<>();
+        map.put("baseInfo", courseListItem);
+        map.put("chapters", nodes);
+        return ResultHelper.format(map);
     }
 }
 

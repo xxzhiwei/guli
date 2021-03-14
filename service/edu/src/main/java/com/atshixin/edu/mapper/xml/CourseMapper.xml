@@ -5,8 +5,18 @@
         SELECT
                ec.*, es.title as subjectParentName, es2.title as subjectName, et.name as teacherName
         FROM edu_course ec
-                    LEFT JOIN edu_teacher et ON ec.teacher_id = et.id
-                    LEFT JOIN edu_subject es ON ec.subject_parent_id = es.id
-                    LEFT JOIN edu_subject es2 ON ec.subject_id = es2.id ${ew.customSqlSegment}
+            LEFT JOIN edu_teacher et ON ec.teacher_id = et.id
+            LEFT JOIN edu_subject es ON ec.subject_parent_id = es.id
+            LEFT JOIN edu_subject es2 ON ec.subject_id = es2.id ${ew.customSqlSegment}
+    </select>
+
+    <select id="getCourseById" resultType="com.atshixin.edu.vo.CourseListItem">
+        select
+               ec.*, es.title as subjectParentName, es2.title as subjectName, et.name as teacherName
+        from edu_course ec
+            left join edu_teacher et on ec.teacher_id = et.id
+            left join edu_subject es on ec.subject_parent_id = es.id
+            left join edu_subject es2 on ec.subject_id = es2.id
+        where ec.id=#{courseId}
     </select>
 </mapper>

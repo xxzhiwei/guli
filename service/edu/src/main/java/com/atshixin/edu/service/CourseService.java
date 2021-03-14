@@ -19,4 +19,5 @@ import java.util.List;
 public interface CourseService extends IService<Course> {
     Page<CourseListItem> getCourses(Integer current, Integer size, QueryWrapper<Course> queryWrapper);
     List<Course> getHotCourses();
+    CourseListItem getCourseById(String courseId);
 }

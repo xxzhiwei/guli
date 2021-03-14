@@ -3,6 +3,7 @@ package com.atshixin.edu.service.impl;
 import com.atshixin.edu.entity.Course;
 import com.atshixin.edu.mapper.CourseMapper;
 import com.atshixin.edu.service.CourseService;
+import com.atshixin.edu.vo.CourseInfo;
 import com.atshixin.edu.vo.CourseListItem;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
@@ -38,5 +39,10 @@ public class CourseServiceImpl extends ServiceImpl<CourseMapper, Course> impleme
         queryWrapper.last("limit 4");
 
         return list(queryWrapper);
+    }
+
+    @Override
+    public CourseListItem getCourseById(String courseId) {
+        return baseMapper.getCourseById(courseId);
     }
 }
