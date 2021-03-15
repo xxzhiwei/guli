@@ -13,7 +13,6 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/vod")
-@CrossOrigin
 public class VodController {
 
     @Autowired
@@ -41,5 +40,11 @@ public class VodController {
         }
         vodService.deleteVideosByIds(videoIds);
         return R.ok();
+    }
+
+    @GetMapping("/videos/{id}/playAuth")
+    public R getVideoPlayAuthById(@PathVariable("id") String videoSourceId) {
+        String playAuth = vodService.getVideoPlayAuthById(videoSourceId);
+        return R.ok().data("playAuth", playAuth);
     }
 }

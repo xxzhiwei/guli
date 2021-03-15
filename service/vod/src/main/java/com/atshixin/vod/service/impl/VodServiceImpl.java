@@ -4,7 +4,10 @@ import com.aliyun.vod.upload.impl.UploadVideoImpl;
 import com.aliyun.vod.upload.req.UploadStreamRequest;
 import com.aliyun.vod.upload.resp.UploadStreamResponse;
 import com.aliyuncs.DefaultAcsClient;
+import com.aliyuncs.exceptions.ClientException;
 import com.aliyuncs.vod.model.v20170321.DeleteVideoRequest;
+import com.aliyuncs.vod.model.v20170321.GetVideoPlayAuthRequest;
+import com.aliyuncs.vod.model.v20170321.GetVideoPlayAuthResponse;
 import com.atshixin.base.exceptionHandler.GuliException;
 import com.atshixin.util.ResultCode;
 import com.atshixin.vod.service.VodService;
@@ -16,7 +19,9 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Service
 public class VodServiceImpl implements VodService {
@@ -52,10 +57,25 @@ public class VodServiceImpl implements VodService {
         deleteVideoHandler(videoId);
     }
 
+
     @Override
     public void deleteVideosByIds(List<String> videoIds) {
         String idStr = StringUtils.join(videoIds, ",");
         deleteVideoHandler(idStr);
+    }
+
+    @Override
+    public String getVideoPlayAuthById(String videoSourceId) {
+        DefaultAcsClient client = VodClient.init(propertiesReader.getRegionId(), propertiesReader.getAssessKeyId(), propertiesReader.getAssessSecret());
+        GetVideoPlayAuthRequest request = new GetVideoPlayAuthRequest();
+        request.setVideoId(videoSourceId);
+        try {
+            GetVideoPlayAuthResponse response = client.getAcsResponse(request);
+            return response.getPlayAuth();
+        } catch (ClientException e) {
+            e.printStackTrace();
+            throw new GuliException(200001, "获取视频播放凭证失败：videoSourceId=" + videoSourceId);
+        }
     }
 
     private void deleteVideoHandler(String idStr) {

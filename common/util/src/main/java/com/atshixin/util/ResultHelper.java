@@ -18,7 +18,8 @@ public class ResultHelper {
     // 列表
     public static R format(List list) {
         return R.ok()
-                .data("records", list);
+                .data("records", list)
+                .data("total", list.size());
     }
 
     // 一条数据
