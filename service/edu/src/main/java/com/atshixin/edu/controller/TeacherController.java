@@ -1,6 +1,7 @@
 package com.atshixin.edu.controller;
 
 import com.atshixin.edu.common.DataTypes;
+import com.atshixin.edu.common.PagingDefaultParameters;
 import com.atshixin.edu.entity.Course;
 import com.atshixin.edu.entity.Teacher;
 import com.atshixin.edu.service.CourseService;
@@ -36,8 +37,8 @@ public class TeacherController {
     @GetMapping
     public R getTeachers(
             @RequestParam(required = false, value = "type", defaultValue = DataTypes.PAGING) String type,
-            @RequestParam(value = "current", required = false, defaultValue = "1") Integer current,
-            @RequestParam(value = "size", required = false, defaultValue = "10") Integer size
+            @RequestParam(value = "current", required = false, defaultValue = PagingDefaultParameters.CURRENT) Integer current,
+            @RequestParam(value = "size", required = false, defaultValue = PagingDefaultParameters.SIZE) Integer size
     ) {
         if (type.equals(DataTypes.FAMOUS)) {
             List<Teacher> teachers = teacherService.getTeachers();

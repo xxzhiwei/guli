@@ -96,11 +96,6 @@ public class AdminCourseServiceImpl extends ServiceImpl<CourseMapper, Course> im
 
     @Override
     public void updateCourseStatusById(String courseId, String status) {
-        Course course = getById(courseId);
-        if (course.getStatus().equals(status)) {
-            throw new GuliException(ResultCode.ERROR, "无需更新状态，courseId：" + courseId);
-        }
-        course.setStatus(status);
-        this.updateById(course);
+        baseMapper.updateCourseStatusById(courseId, status);
     }
 }

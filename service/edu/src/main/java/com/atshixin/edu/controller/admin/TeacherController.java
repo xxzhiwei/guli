@@ -1,6 +1,7 @@
 package com.atshixin.edu.controller.admin;
 
 import com.atshixin.edu.common.DataTypes;
+import com.atshixin.edu.common.PagingDefaultParameters;
 import com.atshixin.edu.entity.Teacher;
 import com.atshixin.edu.service.AdminTeacherService;
 import com.atshixin.util.R;
@@ -30,8 +31,8 @@ public class TeacherController {
 
     @GetMapping
     public R getTeachers(
-            @RequestParam(value = "current", required = false, defaultValue = "1") Integer current,
-            @RequestParam(value = "size", required = false, defaultValue = "10") Integer size,
+            @RequestParam(value = "current", required = false, defaultValue = PagingDefaultParameters.CURRENT) Integer current,
+            @RequestParam(value = "size", required = false, defaultValue = PagingDefaultParameters.SIZE) Integer size,
             @RequestParam(required = false) String name, @RequestParam(required = false) Integer level,
             @RequestParam(required = false) String begin, @RequestParam(required = false) String end,
             @RequestParam(required = false, defaultValue = DataTypes.PAGING) String type

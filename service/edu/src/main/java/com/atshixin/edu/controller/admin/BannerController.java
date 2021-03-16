@@ -1,5 +1,6 @@
 package com.atshixin.edu.controller.admin;
 
+import com.atshixin.edu.common.PagingDefaultParameters;
 import com.atshixin.edu.entity.CrmBanner;
 import com.atshixin.edu.service.AdminBannerService;
 import com.atshixin.edu.vo.Banner;
@@ -21,7 +22,7 @@ public class BannerController {
 
     @GetMapping
     public R getBanners(
-            @RequestParam(value = "current", defaultValue = "10") Integer current, @RequestParam(value = "size", defaultValue = "1") Integer size,
+            @RequestParam(value = "current", defaultValue = PagingDefaultParameters.CURRENT) Integer current, @RequestParam(value = "size", defaultValue = PagingDefaultParameters.SIZE) Integer size,
             @RequestParam(value = "title", required = false) String title,
             @RequestParam(value = "begin", required = false) String begin, @RequestParam(value = "end", required = false) String end
     ) {

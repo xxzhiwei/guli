@@ -19,4 +19,12 @@
             left join edu_subject es2 on ec.subject_id = es2.id
         where ec.id=#{courseId}
     </select>
+
+    <update id="updateCourseStatusById">
+        update edu_course
+        set
+            status=#{status}
+        where
+            id=#{courseId}
+    </update>
 </mapper>

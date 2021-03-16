@@ -16,7 +16,7 @@ import java.util.List;
 public class VodController {
 
     @Autowired
-    VodService vodService;
+    private VodService vodService;
 
     @PostMapping("/videos")
     public R uploadVideo(@RequestParam("file") MultipartFile file) {

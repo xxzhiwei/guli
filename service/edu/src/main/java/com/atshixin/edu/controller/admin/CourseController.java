@@ -2,6 +2,7 @@ package com.atshixin.edu.controller.admin;
 
 
 import com.atshixin.base.exceptionHandler.GuliException;
+import com.atshixin.edu.common.PagingDefaultParameters;
 import com.atshixin.edu.service.AdminCourseService;
 import com.atshixin.edu.entity.Course;
 import com.atshixin.edu.vo.CourseInfo;
@@ -35,8 +36,8 @@ public class CourseController {
 
     @GetMapping
     public R getCourses(
-            @RequestParam(value = "current", required = false) Integer current,
-            @RequestParam(value = "size", required = false) Integer size,
+            @RequestParam(value = "current", defaultValue = PagingDefaultParameters.CURRENT) Integer current,
+            @RequestParam(value = "size", defaultValue = PagingDefaultParameters.SIZE) Integer size,
             @RequestParam(value = "title", required = false) String title,
             @RequestParam(value = "begin", required = false) String begin,
             @RequestParam(value = "end", required = false) String end,

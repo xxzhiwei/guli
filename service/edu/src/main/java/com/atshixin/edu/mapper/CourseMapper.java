@@ -20,4 +20,5 @@ import org.apache.ibatis.annotations.Param;
 public interface CourseMapper extends BaseMapper<Course> {
     IPage<CourseListItem> getCourses(IPage<CourseListItem> page, @Param(Constants.WRAPPER) Wrapper<Course> queryWrapper);
     CourseListItem getCourseById(String courseId);
+    void updateCourseStatusById(String courseId, String status);
 }
