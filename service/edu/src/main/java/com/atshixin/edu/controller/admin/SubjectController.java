@@ -22,7 +22,6 @@ import java.util.List;
  */
 @RestController("AdminSubjectController")
 @RequestMapping("/edu/admin/subjects")
-@CrossOrigin
 public class SubjectController {
 
     @Autowired

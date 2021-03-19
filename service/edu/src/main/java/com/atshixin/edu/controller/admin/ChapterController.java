@@ -22,7 +22,6 @@ import java.util.List;
  */
 @RestController("AdminChapterController")
 @RequestMapping("/edu/admin/chapters")
-@CrossOrigin
 public class ChapterController {
 
     @Autowired

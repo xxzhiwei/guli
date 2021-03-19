@@ -32,8 +32,17 @@ public class Comment {
     private String nickname;
     @ApiModelProperty(value = "会员头像")
     private String avatar;
-    @ApiModelProperty(value = "父评论id")
-    private String parentId;
+
+    // 一级评论无replyId
+    @ApiModelProperty(value = "主题id")
+    private String topicId;
+
+    @ApiModelProperty(value = "回复评论id")
+    private String replyId;
+
+    @ApiModelProperty(value = "回复对象")
+    private String replyTo;
+
     @TableField(fill = FieldFill.INSERT)
     @ApiModelProperty(value = "创建时间")
     private Date gmtCreate;

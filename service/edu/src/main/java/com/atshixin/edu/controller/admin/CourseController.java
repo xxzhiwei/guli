@@ -28,7 +28,6 @@ import java.util.Map;
  */
 @RestController("AdminCourseController")
 @RequestMapping("/edu/admin/courses")
-@CrossOrigin
 public class CourseController {
 
     @Autowired

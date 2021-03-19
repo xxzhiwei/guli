@@ -20,7 +20,6 @@ import org.springframework.web.bind.annotation.*;
  */
 @RestController("AdminChapterPartController")
 @RequestMapping("/edu/admin/chapterPart")
-@CrossOrigin
 public class ChapterPartController {
 
     @Autowired

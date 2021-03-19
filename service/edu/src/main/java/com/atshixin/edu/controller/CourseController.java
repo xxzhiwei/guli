@@ -9,13 +9,11 @@ import com.atshixin.edu.entity.Course;
 import com.atshixin.edu.service.ChapterService;
 import com.atshixin.edu.service.CommentService;
 import com.atshixin.edu.service.CourseService;
-import com.atshixin.edu.vo.ChapterTreeNode;
-import com.atshixin.edu.vo.CommentVo;
-import com.atshixin.edu.vo.CourseListItem;
-import com.atshixin.edu.vo.UpdateCommentVo;
+import com.atshixin.edu.vo.*;
 import com.atshixin.util.R;
 import com.atshixin.util.ResultHelper;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.baomidou.mybatisplus.core.incrementer.DefaultIdentifierGenerator;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -103,9 +101,16 @@ public class CourseController {
     }
 
     @PostMapping("/comments")
-    public R addComment(@RequestBody CommentVo commentVo) {
+    public R addComment(@RequestBody AddCommentVo addCommentVo) {
         Comment comment = new Comment();
-        BeanUtils.copyProperties(commentVo, comment);
+        BeanUtils.copyProperties(addCommentVo, comment);
+
+        // 二级评论必定有topicId，否则为一级评论
+        if (StringUtils.isEmpty(comment.getTopicId())) {
+            DefaultIdentifierGenerator identifierGenerator = new DefaultIdentifierGenerator();
+            comment.setTopicId(identifierGenerator.nextId(new Object()).toString());
+        }
+
         commentService.save(comment);
         return R.ok();
     }
@@ -114,10 +119,12 @@ public class CourseController {
     public R getCourseCommentsById(
             @RequestParam(value = "current", defaultValue = PagingDefaultParameters.CURRENT) Integer current,
             @RequestParam(value = "size", defaultValue = PagingDefaultParameters.SIZE) Integer size,
+            @RequestParam(value = "childSize", defaultValue = PagingDefaultParameters.SIZE) Integer childSize,
             @PathVariable("id") String courseId) {
         QueryWrapper<Comment> queryWrapper = new QueryWrapper<>();
         queryWrapper.eq("course_id", courseId);
-        Page<Comment> comments = commentService.getCommentsById(current, size, queryWrapper);
+        queryWrapper.eq("reply_id", "");
+        Page<CommentVo> comments = commentService.getCommentVos(current, size, childSize, queryWrapper);
         return ResultHelper.format(comments);
     }
 
@@ -132,6 +139,11 @@ public class CourseController {
     public R updateCommentById(@PathVariable("id") String commentId, @RequestBody UpdateCommentVo updateCommentVo) {
         commentService.updateCommentById(commentId, updateCommentVo.getContent());
         return R.ok();
+    }
+
+    public static void main(String[] args) {
+        DefaultIdentifierGenerator identifierGenerator = new DefaultIdentifierGenerator();
+        System.out.println(identifierGenerator.nextId(new Object()));
     }
 }
 

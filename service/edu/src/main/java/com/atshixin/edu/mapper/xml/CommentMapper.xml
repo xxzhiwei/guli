@@ -6,4 +6,11 @@
             set content=#{content}
         where id=#{commentId}
     </update>
+
+    <select id="getComments" resultType="com.atshixin.edu.vo.CommentVo">
+        select
+            id, course_id, teacher_id, member_id, nickname, avatar, content, is_deleted, gmt_create, gmt_modified, reply_id, reply_to, topic_id
+        from
+            edu_comment ${ew.customSqlSegment}
+    </select>
 </mapper>

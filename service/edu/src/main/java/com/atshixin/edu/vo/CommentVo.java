@@ -1,16 +1,11 @@
 package com.atshixin.edu.vo;
 
+import com.atshixin.edu.entity.Comment;
 import lombok.Getter;
 import lombok.Setter;
 
 @Getter
 @Setter
-public class CommentVo {
-    private String content;
-    private String courseId;
-    private String teacherId;
-    private String memberId;
-    private String nickname;
-    private String avatar;
-    private String parentId;
+public class CommentVo extends Comment {
+    private ChildCommentVo data;
 }

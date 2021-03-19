@@ -1,5 +1,6 @@
 package com.atshixin.edu.mapper;
 
+import com.atshixin.edu.entity.Comment;
 import com.atshixin.edu.entity.Course;
 import com.atshixin.edu.vo.CourseInfo;
 import com.atshixin.edu.vo.CourseListItem;
