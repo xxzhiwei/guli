@@ -1,6 +1,5 @@
 package com.atshixin.edu.controller;
 
-
 import com.atshixin.edu.common.DataTypes;
 import com.atshixin.edu.common.OrderTypes;
 import com.atshixin.edu.common.PagingDefaultParameters;
@@ -122,9 +121,27 @@ public class CourseController {
             @RequestParam(value = "childSize", defaultValue = PagingDefaultParameters.SIZE) Integer childSize,
             @PathVariable("id") String courseId) {
         QueryWrapper<Comment> queryWrapper = new QueryWrapper<>();
+        Page<CommentVo> comments;
+
         queryWrapper.eq("course_id", courseId);
         queryWrapper.eq("reply_id", "");
-        Page<CommentVo> comments = commentService.getCommentVos(current, size, childSize, queryWrapper);
+        comments = commentService.getCommentVos(current, size, queryWrapper, childSize);
+
+        return ResultHelper.format(comments);
+    }
+
+    @GetMapping("/comments/topic/{topicId}/reply/{replyId}")
+    public R getSecondCourseCommentsById(
+            @PathVariable(value = "replyId") String replyId,
+            @PathVariable(value = "topicId") String topicId,
+            @RequestParam(value = "current", defaultValue = PagingDefaultParameters.CURRENT) Integer current,
+            @RequestParam(value = "size", defaultValue = PagingDefaultParameters.SIZE) Integer size
+    ) {
+        // courseId需要用到吗？
+        QueryWrapper<Comment> queryWrapper = new QueryWrapper<>();
+        queryWrapper.eq("topic_id", topicId);
+        queryWrapper.eq("reply_id", replyId);
+        Page<CommentVo> comments = commentService.getComments(current, size, queryWrapper);
         return ResultHelper.format(comments);
     }
 

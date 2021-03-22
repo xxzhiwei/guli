@@ -11,6 +11,8 @@ public class ResultHelper {
                 .data("records", page.getRecords())
                 .data("total", page.getTotal())
                 .data("pages", page.getPages())
+                .data("current", page.getCurrent())
+                .data("size", page.getSize())
                 .data("hasNext", page.hasNext())
                 .data("hasPrevious", page.hasPrevious());
     }

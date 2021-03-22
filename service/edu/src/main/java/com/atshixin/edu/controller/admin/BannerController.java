@@ -1,6 +1,5 @@
 package com.atshixin.edu.controller.admin;
 
-import com.atshixin.base.exceptionHandler.GuliException;
 import com.atshixin.edu.common.PagingDefaultParameters;
 import com.atshixin.edu.entity.CrmBanner;
 import com.atshixin.edu.service.AdminBannerService;

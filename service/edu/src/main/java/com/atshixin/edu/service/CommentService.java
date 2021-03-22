@@ -9,5 +9,5 @@ import com.baomidou.mybatisplus.extension.service.IService;
 public interface CommentService extends IService<Comment> {
     Page<CommentVo> getComments(Integer current, Integer size, QueryWrapper<Comment> queryWrapper);
     void updateCommentById(String commentId, String content);
-    Page<CommentVo> getCommentVos(Integer current, Integer size, Integer childSize, QueryWrapper<Comment> queryWrapper);
+    Page<CommentVo> getCommentVos(Integer current, Integer size, QueryWrapper<Comment> queryWrapper, Integer childSize);
 }

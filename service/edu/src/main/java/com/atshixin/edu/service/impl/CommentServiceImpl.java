@@ -25,14 +25,15 @@ public class CommentServiceImpl extends ServiceImpl<CommentMapper, Comment> impl
     }
 
     @Override
-    public Page<CommentVo> getCommentVos(Integer current, Integer size, Integer childSize, QueryWrapper<Comment> queryWrapper) {
+    public Page<CommentVo> getCommentVos(Integer current, Integer size, QueryWrapper<Comment> queryWrapper, Integer childSize) {
         Page<CommentVo> commentVoPage = getComments(current, size, queryWrapper);
-
         for (CommentVo commentVo : commentVoPage.getRecords()) {
             // 获取二级评论
             QueryWrapper<Comment> childQueryWrapper = new QueryWrapper<>();
+            // 主题id -> topic_id
             childQueryWrapper.eq("topic_id", commentVo.getTopicId());
-            childQueryWrapper.ne("reply_id", "");
+            // 回复id不为空
+            childQueryWrapper.eq("reply_id", commentVo.getId());
             Page<CommentVo> childCommentPage = getComments(1, childSize, childQueryWrapper);
 
             ChildCommentVo childCommentVo = new ChildCommentVo(childCommentPage);
