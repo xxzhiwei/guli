@@ -22,7 +22,6 @@ import java.net.URLEncoder;
 import java.util.HashMap;
 
 @Controller
-@CrossOrigin
 @RequestMapping(value = {"/ucenter/WeChat", "/api/ucenter/wx"})
 public class WeChatController {
 

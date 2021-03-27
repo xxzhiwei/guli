@@ -111,7 +111,9 @@ public class CourseController {
         }
 
         commentService.save(comment);
-        return R.ok();
+        CommentVo commentVo = new CommentVo();
+        BeanUtils.copyProperties(comment, commentVo);
+        return ResultHelper.format(commentVo);
     }
 
     @GetMapping("/{id}/comments")
