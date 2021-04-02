@@ -47,12 +47,6 @@ public class MemberController {
         return ResultHelper.format(member);
     }
 
-    @GetMapping("/{id}")
-    public R getUserInfo(@PathVariable("id") String userId) {
-        Member user = memberService.getById(userId);
-        return ResultHelper.format(user);
-    }
-
     @PostMapping("/login")
     public R login(@RequestBody LoginDto loginDto) {
         TokenR tokenR = memberService.login(loginDto);
@@ -63,6 +57,12 @@ public class MemberController {
     public R register(@RequestBody RegisterDto registerDto) {
         memberService.register(registerDto);
         return R.ok();
+    }
+
+    @GetMapping("/{id}")
+    public R getUserInfoById(@PathVariable("id") String userId) {
+        Member user = memberService.getById(userId);
+        return ResultHelper.format(user);
     }
 }
 

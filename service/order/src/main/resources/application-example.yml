@@ -1,0 +1,30 @@
+server:
+  port: 8095
+
+spring:
+  application:
+    name: guli-order
+  profiles:
+    active: dev
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/guli?serverTimezone=GMT%2B8
+    username: xxx
+    password: xxx
+  jackson:
+    time-zone: GMT+8
+    date-format: yyyy-MM-dd HH:mm:ss
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 127.0.0.1:8848
+
+mybatis-plus:
+  mapper-locations: classpath:com/atshixin/order/mapper/xml/*.xml
+  global-config:
+    # （以下是默认配置，不写也行）
+    db-config:
+      logic-not-delete-value: 0
+      logic-delete-value: 1
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl

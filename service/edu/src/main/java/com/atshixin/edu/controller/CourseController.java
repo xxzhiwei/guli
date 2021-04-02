@@ -1,5 +1,6 @@
 package com.atshixin.edu.controller;
 
+import com.atshixin.base.types.CallTypes;
 import com.atshixin.edu.common.DataTypes;
 import com.atshixin.edu.common.OrderTypes;
 import com.atshixin.edu.common.PagingDefaultParameters;
@@ -90,8 +91,13 @@ public class CourseController {
     }
 
     @GetMapping("/{id}")
-    public R getCourse(@PathVariable("id") String courseId) {
+    public R getCourseById(@PathVariable("id") String courseId, @RequestParam(required = false, defaultValue = CallTypes.HTTP) String callType) {
         CourseListItem courseListItem = courseService.getCourseById(courseId);
+
+        // 远程调用
+        if (callType.equals(CallTypes.RPC)) {
+            return R.ok().data("record", courseListItem);
+        }
         List<ChapterTreeNode> nodes = chapterService.getChapterTreeNodesById(courseId);
         Map<String, Object> map = new HashMap<>();
         map.put("baseInfo", courseListItem);

@@ -1,0 +1,16 @@
+server:
+  port: 8092
+
+spring:
+  application:
+    name: guli-user
+  profiles:
+    active: dev
+  servlet:
+    multipart:
+      max-file-size: 1024MB
+      max-request-size: 1024MB
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 127.0.0.1:8848
