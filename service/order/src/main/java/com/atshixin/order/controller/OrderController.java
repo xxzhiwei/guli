@@ -27,6 +27,7 @@ public class OrderController {
     @Autowired
     private OrderService orderService;
 
+    // 创建订单
     @PostMapping
     public R createOrder(@RequestBody Map<String, String> orderDTO, HttpServletRequest request) {
         String userId = JWT.getUserIdByToken(request);
@@ -35,16 +36,16 @@ public class OrderController {
         return R.ok().data("orderNo", orderNo);
     }
 
-    // 创建表单
+    // 获取订单信息
     @GetMapping("/{orderNo}")
     public R getOrderByNo(@PathVariable String orderNo) {
         Order order = orderService.getOrderByNo(orderNo);
         return ResultHelper.format(order);
     }
 
-    // 生成微信支付二维码
+    // 根据订单号生成微信支付二维码
     @PostMapping
-    public R generateWechatPayQRCode() {
+    public R createWechatPayQRCodeByNo() {
         return R.ok();
     }
 }

@@ -12,5 +12,5 @@ import com.baomidou.mybatisplus.core.mapper.BaseMapper;
  * @since 2021-03-31
  */
 public interface OrderMapper extends BaseMapper<Order> {
-
+    void updateOrderStatusByNo(String orderNo, Integer status);
 }

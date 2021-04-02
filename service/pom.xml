@@ -16,7 +16,7 @@
         <module>vod</module>
         <module>edu</module>
         <module>user_center</module>
-        <module>cms</module>
+        <module>order</module>
     </modules>
 
     <dependencies>

@@ -81,6 +81,11 @@ public class OrderServiceImpl extends ServiceImpl<OrderMapper, Order> implements
         return getOne(queryWrapper);
     }
 
+    @Override
+    public void updateOrderStatusByNo(String orderNo, Integer status) {
+        this.baseMapper.updateOrderStatusByNo(orderNo, status);
+    }
+
     private Map<String, Object> getRecord(R r) {
         Object record = r.getData().get("record");
         return (Map<String, Object>) record;
