@@ -6,6 +6,11 @@ spring:
     name: guli-user
   profiles:
     active: dev
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/guli?serverTimezone=GMT%2B8
+    username: root
+    password: root
   servlet:
     multipart:
       max-file-size: 1024MB
@@ -14,3 +19,8 @@ spring:
     nacos:
       discovery:
         server-addr: 127.0.0.1:8848
+wechat:
+  open:
+    app-id: wxed9954c01bb89b47
+    app-secret: a7482517235173ddb4083788de60b90e
+    redirect-url: http://guli:shop/api/ucenter/wx/callback

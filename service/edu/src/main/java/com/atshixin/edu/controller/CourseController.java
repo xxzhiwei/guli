@@ -1,6 +1,7 @@
 package com.atshixin.edu.controller;
 
 import com.atshixin.base.types.CallTypes;
+import com.atshixin.edu.client.OrderFeignClient;
 import com.atshixin.edu.common.DataTypes;
 import com.atshixin.edu.common.OrderTypes;
 import com.atshixin.edu.common.PagingDefaultParameters;
@@ -10,6 +11,7 @@ import com.atshixin.edu.service.ChapterService;
 import com.atshixin.edu.service.CommentService;
 import com.atshixin.edu.service.CourseService;
 import com.atshixin.edu.vo.*;
+import com.atshixin.util.JWT;
 import com.atshixin.util.R;
 import com.atshixin.util.ResultHelper;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
@@ -20,6 +22,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -44,6 +48,9 @@ public class CourseController {
 
     @Autowired
     private CommentService commentService;
+
+    @Autowired
+    private OrderFeignClient orderFeignClient;
 
     @GetMapping
     public R getCourses(
@@ -91,7 +98,8 @@ public class CourseController {
     }
 
     @GetMapping("/{id}")
-    public R getCourseById(@PathVariable("id") String courseId, @RequestParam(required = false, defaultValue = CallTypes.HTTP) String callType) {
+    public R getCourseById(@PathVariable("id") String courseId,
+                           @RequestParam(required = false, defaultValue = CallTypes.HTTP) String callType, HttpServletRequest httpServletRequest) {
         CourseListItem courseListItem = courseService.getCourseById(courseId);
 
         // 远程调用
@@ -99,9 +107,13 @@ public class CourseController {
             return R.ok().data("record", courseListItem);
         }
         List<ChapterTreeNode> nodes = chapterService.getChapterTreeNodesById(courseId);
+        String userId = JWT.getUserIdByToken(httpServletRequest);
+        System.out.println(userId);
+        boolean isPayOrder = orderFeignClient.isPayOrder(JWT.getUserIdByToken(httpServletRequest), courseId);
         Map<String, Object> map = new HashMap<>();
         map.put("baseInfo", courseListItem);
         map.put("chapters", nodes);
+        map.put("isPay", isPayOrder);
         return ResultHelper.format(map);
     }
 

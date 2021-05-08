@@ -5,4 +5,5 @@ import java.util.Map;
 public interface PayLogService {
     Map<String, Object> createPaymentQRCodeByNo(String orderNo);
     Map<String, String> getPaymentStatusByNo(String orderNo);
+    void updatePaymentStatus(Map<String, String> map);
 }
