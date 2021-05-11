@@ -38,33 +38,32 @@ public class TeacherController {
             @RequestParam(required = false) String begin, @RequestParam(required = false) String end,
             @RequestParam(required = false, defaultValue = DataTypes.PAGING) String type
     ) {
-        throw new GuliException(2000001, "test");
-//        if (type.equals(DataTypes.ALL)) {
-//            List<Teacher> teachers = adminTeacherService.list(null);
-//            return ResultHelper.format(teachers);
-//        }
-//        QueryWrapper<Teacher> queryWrapper = new QueryWrapper<>();
-//
-//        if (!StringUtils.isEmpty(name)) {
-//            queryWrapper.like("name", name);
-//        }
-//
-//        // 如果传入为null，该方法会返回true
-//        if (!StringUtils.isEmpty(level)) {
-//            queryWrapper.eq("level", level);
-//        }
-//
-//        if (!StringUtils.isEmpty(begin)) {
-//            queryWrapper.ge("gmt_create", begin);
-//        }
-//
-//        if (!StringUtils.isEmpty(end)) {
-//            queryWrapper.le("gmt_create", end);
-//        }
-//
-//        Page<Teacher> page = adminTeacherService.getTeachers(current, size, queryWrapper);
-//
-//        return ResultHelper.format(page);
+        if (type.equals(DataTypes.ALL)) {
+            List<Teacher> teachers = adminTeacherService.list(null);
+            return ResultHelper.format(teachers);
+        }
+        QueryWrapper<Teacher> queryWrapper = new QueryWrapper<>();
+
+        if (!StringUtils.isEmpty(name)) {
+            queryWrapper.like("name", name);
+        }
+
+        // 如果传入为null，该方法会返回true
+        if (!StringUtils.isEmpty(level)) {
+            queryWrapper.eq("level", level);
+        }
+
+        if (!StringUtils.isEmpty(begin)) {
+            queryWrapper.ge("gmt_create", begin);
+        }
+
+        if (!StringUtils.isEmpty(end)) {
+            queryWrapper.le("gmt_create", end);
+        }
+
+        Page<Teacher> page = adminTeacherService.getTeachers(current, size, queryWrapper);
+
+        return ResultHelper.format(page);
     }
 
     @DeleteMapping("/{id}")

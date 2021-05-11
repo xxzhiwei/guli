@@ -108,8 +108,10 @@ public class CourseController {
         }
         List<ChapterTreeNode> nodes = chapterService.getChapterTreeNodesById(courseId);
         String userId = JWT.getUserIdByToken(httpServletRequest);
-        System.out.println(userId);
-        boolean isPayOrder = orderFeignClient.isPayOrder(JWT.getUserIdByToken(httpServletRequest), courseId);
+        boolean isPayOrder = false;
+        if (!userId.equals("")) {
+            isPayOrder = orderFeignClient.isPayOrder(userId, courseId);
+        }
         Map<String, Object> map = new HashMap<>();
         map.put("baseInfo", courseListItem);
         map.put("chapters", nodes);

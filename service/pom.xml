@@ -17,6 +17,8 @@
         <module>edu</module>
         <module>user_center</module>
         <module>order</module>
+        <module>statistics</module>
+        <module>canal</module>
     </modules>
 
     <dependencies>
