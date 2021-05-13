@@ -17,6 +17,7 @@ public class SwaggerConfig {
 
     @Bean
     public Docket webApiConfig(){
+        // http://localhost:8093/swagger-ui.html
         return new Docket(DocumentationType.SWAGGER_2)
                 .groupName("webApi")
                 .apiInfo(webApiInfo())

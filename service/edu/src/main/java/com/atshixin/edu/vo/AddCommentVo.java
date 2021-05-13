@@ -12,7 +12,7 @@ public class AddCommentVo {
     private String memberId;
     private String nickname;
     private String avatar;
-    private String topicId;
+    private String parentId;
     private String replyId;
     private String replyTo;
 }

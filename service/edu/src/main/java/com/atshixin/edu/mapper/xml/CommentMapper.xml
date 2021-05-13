@@ -9,8 +9,23 @@
 
     <select id="getComments" resultType="com.atshixin.edu.vo.CommentVo">
         select
-            id, course_id, teacher_id, member_id, nickname, avatar, content, is_deleted, gmt_create, gmt_modified, reply_id, reply_to, topic_id
+            id, course_id, teacher_id, member_id, nickname, avatar, content, is_deleted, gmt_create, gmt_modified, reply_id, reply_to, parent_id
         from
             edu_comment ${ew.customSqlSegment}
+    </select>
+    <select id="getTopChildCommentsByParentIds" resultType="com.atshixin.edu.vo.CommentVo">
+        SELECT ec.* FROM edu_comment ec WHERE (SELECT COUNT(*) FROM edu_comment ec2 WHERE ec2.parent_id = ec.parent_id AND ec2.id >= ec.id) &lt;= #{top} AND ec.parent_id IN
+            <foreach collection="parentIds" item="id" separator="," index="index" open="(" close=")">
+                #{id}
+            </foreach>
+        ORDER BY ec.parent_id;
+    </select>
+    <select id="getChildCommentCountByParentIds" resultType="com.atshixin.edu.vo.ChildCommentCountVo">
+        SELECT parent_id, COUNT(*) count FROM edu_comment WHERE parent_id IN
+            <foreach collection="parentIds" item="id" separator="," index="index" open="(" close=")">
+                #{id}
+            </foreach>
+        AND parent_id &lt;&gt; ''
+        GROUP BY parent_id;
     </select>
 </mapper>

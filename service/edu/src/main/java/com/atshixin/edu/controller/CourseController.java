@@ -125,10 +125,10 @@ public class CourseController {
         BeanUtils.copyProperties(addCommentVo, comment);
 
         // 二级评论必定有topicId，否则为一级评论
-        if (StringUtils.isEmpty(comment.getTopicId())) {
-            DefaultIdentifierGenerator identifierGenerator = new DefaultIdentifierGenerator();
-            comment.setTopicId(identifierGenerator.nextId(new Object()).toString());
-        }
+        //if (StringUtils.isEmpty(comment.getParentId())) {
+        //    DefaultIdentifierGenerator identifierGenerator = new DefaultIdentifierGenerator();
+        //    comment.setParentId(identifierGenerator.nextId(new Object()).toString());
+        //}
 
         commentService.save(comment);
         CommentVo commentVo = new CommentVo();
@@ -140,14 +140,13 @@ public class CourseController {
     public R getCourseCommentsById(
             @RequestParam(value = "current", defaultValue = PagingDefaultParameters.CURRENT) Integer current,
             @RequestParam(value = "size", defaultValue = PagingDefaultParameters.SIZE) Integer size,
-            @RequestParam(value = "childSize", defaultValue = PagingDefaultParameters.SIZE) Integer childSize,
             @PathVariable("id") String courseId) {
         QueryWrapper<Comment> queryWrapper = new QueryWrapper<>();
         Page<CommentVo> comments;
 
         queryWrapper.eq("course_id", courseId);
-        queryWrapper.eq("reply_id", "");
-        comments = commentService.getCommentVos(current, size, queryWrapper, childSize);
+        queryWrapper.eq("parent_id", "");
+        comments = commentService.getCommentVos(current, size, queryWrapper);
 
         return ResultHelper.format(comments);
     }

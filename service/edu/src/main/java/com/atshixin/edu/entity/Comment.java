@@ -33,11 +33,10 @@ public class Comment {
     @ApiModelProperty(value = "会员头像")
     private String avatar;
 
-    // 一级评论无replyId
-    @ApiModelProperty(value = "主题id")
-    private String topicId;
+    @ApiModelProperty(value = "父评论id")
+    private String parentId;
 
-    @ApiModelProperty(value = "回复评论id")
+    @ApiModelProperty(value = "回复评论的id")
     private String replyId;
 
     @ApiModelProperty(value = "回复对象")
