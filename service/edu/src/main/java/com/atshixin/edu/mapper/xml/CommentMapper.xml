@@ -6,7 +6,6 @@
             set content=#{content}
         where id=#{commentId}
     </update>
-
     <select id="getComments" resultType="com.atshixin.edu.vo.CommentVo">
         select
             id, course_id, teacher_id, member_id, nickname, avatar, content, is_deleted, gmt_create, gmt_modified, reply_id, reply_to, parent_id
@@ -18,7 +17,7 @@
             <foreach collection="parentIds" item="id" separator="," index="index" open="(" close=")">
                 #{id}
             </foreach>
-        ORDER BY ec.parent_id;
+        ORDER BY ec.id DESC;
     </select>
     <select id="getChildCommentCountByParentIds" resultType="com.atshixin.edu.vo.ChildCommentCountVo">
         SELECT parent_id, COUNT(*) count FROM edu_comment WHERE parent_id IN

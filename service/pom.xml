@@ -19,7 +19,7 @@
         <module>order</module>
         <module>statistics</module>
         <module>canal</module>
-        <module>gateway</module>
+        <module>acl</module>
     </modules>
 
     <dependencies>

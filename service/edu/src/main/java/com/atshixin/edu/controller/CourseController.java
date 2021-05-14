@@ -123,13 +123,6 @@ public class CourseController {
     public R addComment(@RequestBody AddCommentVo addCommentVo) {
         Comment comment = new Comment();
         BeanUtils.copyProperties(addCommentVo, comment);
-
-        // 二级评论必定有topicId，否则为一级评论
-        //if (StringUtils.isEmpty(comment.getParentId())) {
-        //    DefaultIdentifierGenerator identifierGenerator = new DefaultIdentifierGenerator();
-        //    comment.setParentId(identifierGenerator.nextId(new Object()).toString());
-        //}
-
         commentService.save(comment);
         CommentVo commentVo = new CommentVo();
         BeanUtils.copyProperties(comment, commentVo);
@@ -151,17 +144,14 @@ public class CourseController {
         return ResultHelper.format(comments);
     }
 
-    @GetMapping("/comments/topic/{topicId}/reply/{replyId}")
+    @GetMapping("/comments/parent/{parentId}")
     public R getSecondCourseCommentsById(
-            @PathVariable(value = "replyId") String replyId,
-            @PathVariable(value = "topicId") String topicId,
+            @PathVariable(value = "parentId") String parentId,
             @RequestParam(value = "current", defaultValue = PagingDefaultParameters.CURRENT) Integer current,
             @RequestParam(value = "size", defaultValue = PagingDefaultParameters.SIZE) Integer size
     ) {
-        // courseId需要用到吗？
         QueryWrapper<Comment> queryWrapper = new QueryWrapper<>();
-        queryWrapper.eq("topic_id", topicId);
-        queryWrapper.eq("reply_id", replyId);
+        queryWrapper.eq("parent_id", parentId);
         Page<CommentVo> comments = commentService.getComments(current, size, queryWrapper);
         return ResultHelper.format(comments);
     }

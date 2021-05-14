@@ -5,8 +5,6 @@
     <modules>
         <module>service</module>
         <module>common</module>
-        <module>statistics</module>
-        <module>canal</module>
         <module>infrasturcture</module>
     </modules>
     <parent>

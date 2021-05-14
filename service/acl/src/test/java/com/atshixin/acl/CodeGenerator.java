@@ -1,4 +1,4 @@
-package com.atshixin.edu;
+package com.atshixin.acl;
 
 import com.baomidou.mybatisplus.annotation.DbType;
 import com.baomidou.mybatisplus.annotation.IdType;
@@ -43,14 +43,14 @@ public class CodeGenerator {
         dsc.setUrl("jdbc:mysql://localhost:3306/guli?serverTimezone=GMT%2B8");
         dsc.setDriverName("com.mysql.cj.jdbc.Driver");
         dsc.setUsername("root");
-        dsc.setPassword("");
+        dsc.setPassword("root");
         dsc.setDbType(DbType.MYSQL);
         mpg.setDataSource(dsc);
 
         // 4、包配置
         PackageConfig pc = new PackageConfig();// com.atshixin.edu
         pc.setParent("com.atshixin");
-        pc.setModuleName("cms"); //模块名
+        pc.setModuleName("acl"); //模块名
         pc.setController("controller");
         pc.setEntity("entity");
         pc.setService("service");
@@ -59,7 +59,7 @@ public class CodeGenerator {
 
         // 5、策略配置
         StrategyConfig strategy = new StrategyConfig();
-        strategy.setInclude("crm_banner");
+        strategy.setInclude("acl_role");
         strategy.setNaming(NamingStrategy.underline_to_camel);//数据库表映射到实体的命名策略
         strategy.setTablePrefix(pc.getModuleName() + "_"); //生成实体时去掉表前缀
 
