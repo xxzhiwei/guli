@@ -1,7 +1,11 @@
 package com.atshixin.acl.service;
 
 import com.atshixin.acl.entity.Permission;
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.IService;
+
+import java.util.List;
 
 /**
  * <p>
@@ -13,4 +17,8 @@ import com.baomidou.mybatisplus.extension.service.IService;
  */
 public interface PermissionService extends IService<Permission> {
 
+    Page<Permission> getPermissions(Integer current, Integer size, QueryWrapper<Permission> queryWrapper);
+    List<Permission> getPermissionsByUserId(String userId);
+    List<Permission> getPermissionsByRoleId(String roleId);
+    void assignPermissionsForRole(String roleId, List<String> permissionIds);
 }

@@ -32,15 +32,23 @@ public class RoleController {
     public R getRoles(
             @RequestParam(value = "current", defaultValue = "1") Integer current,
             @RequestParam(value = "size", defaultValue = "10") Integer size,
-            @RequestParam String name) {
+            @RequestParam(required = false) String name) {
         QueryWrapper<Role> queryWrapper = new QueryWrapper<>();
         queryWrapper.eq("is_deleted", 0);
 
         if (!StringUtils.isEmpty(name)) {
-            queryWrapper.eq("role_name", name);
+            queryWrapper.like("role_name", name);
         }
         Page<Role> courses = roleService.getRoles(current, size, queryWrapper);
         return ResultHelper.format(courses);
+    }
+    @GetMapping("/{roleId}")
+    public R getRoleById(@PathVariable String roleId) {
+        if (StringUtils.isEmpty(roleId)) {
+            throw new GuliException(200008, "id不能为空");
+        }
+        Role role = roleService.getById(roleId);
+        return ResultHelper.format(role);
     }
     // 创建角色
     @PostMapping
@@ -60,6 +68,7 @@ public class RoleController {
             throw new GuliException(2000001, "删除失败，roleId不能为空");
         }
         roleService.removeById(roleId);
+
         return R.ok();
     }
     // 更新角色

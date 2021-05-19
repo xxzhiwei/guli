@@ -20,7 +20,7 @@ spring:
         server-addr: 127.0.0.1:8848
 
 mybatis-plus:
-  mapper-locations: classpath:com/atshixin/edu/mapper/xml/*.xml
+  mapper-locations: classpath:com/atshixin/acl/mapper/xml/*.xml
   global-config:
     # （以下是默认配置，不写也行）
     db-config:
