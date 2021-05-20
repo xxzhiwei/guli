@@ -30,7 +30,7 @@ public class Permission implements Serializable {
     private String id;
 
     @ApiModelProperty(value = "所属上级")
-    private String pid;
+    private String parentId;
 
     @ApiModelProperty(value = "名称")
     private String name;
@@ -39,7 +39,7 @@ public class Permission implements Serializable {
     private Integer type;
 
     @ApiModelProperty(value = "权限值")
-    private String permissionValue;
+    private String code;
 
     @ApiModelProperty(value = "访问路径")
     private String path;
